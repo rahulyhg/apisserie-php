@@ -1,0 +1,151 @@
+#screen.admin
+{
+  #main-header
+  {
+    h1
+    {
+      color: #FC0;
+    }
+
+    ul
+    {
+      li
+      {
+        &.current
+        {
+          a, span
+          {
+            color: #FC0;
+          }
+        }
+
+        a, span
+        {
+          &:hover
+          {
+            background: #FC0;
+            color: black;
+            text-shadow: none;
+          }
+        }
+      }
+    }
+  }
+
+  .list
+  {
+    margin-top: 2em;
+
+    ul
+    {
+      margin: 0;
+      padding: 0;
+      border: 1px solid #CCC;
+    }
+
+    li
+    {
+      position: relative;
+      padding: 0.5em;
+      background: white;
+      border-top: 1px solid #EEE;
+      list-style-type: none;
+      transition: background 100ms;
+
+      form
+      {
+        display: inline;
+
+        select
+        {
+          position: absolute;
+          margin: 0;
+          top: 1em;
+          right: 26%;
+        }
+
+        button
+        {
+          position: absolute;
+          width: 10%;
+          margin: 0;
+          top: 1em;
+          right: 2%;
+
+          &.move
+          {
+            width: 5%;
+
+            &.up
+            {
+              right: 21%;
+            }
+
+            &.down
+            {
+              right: 15%;
+            }
+          }
+
+          &.update
+          {
+            right: 15%;
+          }
+        }
+
+        &.rename
+        {
+          display: none;
+
+          input
+          {
+            width: 25%;
+            padding: 0.25em;
+          }
+
+          button
+          {
+            right: auto;
+            left: 28%;
+          }
+        }
+      }
+
+      &:first-child
+      {
+        border-top: 0;
+      }
+
+      &:hover
+      {
+        background: #FFFCDD;
+
+        span.name
+        {
+          display: none;
+        }
+
+        form.rename
+        {
+          display: inline;
+        }
+      }
+    }
+  }
+
+  .add
+  {
+    input
+    {
+      padding: 0.5em;
+      width: 50%;
+    }
+
+    button
+    {
+      width: 10%;
+      margin: 0;
+      padding: 0.5em;
+    }
+  }
+}
