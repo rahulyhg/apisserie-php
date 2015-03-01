@@ -1,46 +1,17 @@
-<html>
-	<head>
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('master')
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+@section('content')
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+	<ul>
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+    @foreach ( $products as $product )
+      
+      <li>
+        {{ $product->name }}
+      </li>
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
+    @endforeach
 
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<h1>Products</h1>
-				<div class="quote">{{ $products }}</div>
-			</div>
-		</div>
-	</body>
-</html>
+  </ul>
+
+@stop

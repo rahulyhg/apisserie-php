@@ -11,7 +11,16 @@
 |
 */
 
-Route::get( '/', 'ProductsController@index' );
+Route::get( '/', function() { return Redirect::to('products'); });
+
+Route::group(['prefix' => 'products'], function()
+{
+  Route::get( '/', 'ProductsController@index' );
+  Route::get( 'create', 'ProductsController@create' );
+
+  Route::post( '/', 'ProductsController@store' );
+});
+
 //Route::get( '/', 'ProductsController@index' );
 
 /*
