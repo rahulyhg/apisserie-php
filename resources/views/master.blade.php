@@ -6,14 +6,14 @@
 
     <title>A'pisserie</title>
 
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/style.css" rel="stylesheet">
   </head>
   <body>
 		
 		@yield('content')
 
-	  <script src="js/jquery.2.1.1.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+	  <script src="{{ url('/') }}/js/jquery.2.1.1.min.js"></script>
+    <script src="{{ url('/') }}/js/scripts.min.js"></script>
 
   </body>
 </html>
