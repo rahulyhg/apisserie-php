@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProductRequest;
 use App\Product;
 use Redirect;
-use Request;
 
 class ProductsController extends Controller {
 
@@ -13,11 +13,9 @@ class ProductsController extends Controller {
     return view('products.index', compact('products'));
   }
 
-  public function store ()
+  public function store ( CreateProductRequest $request )
   {
-    $input = Request::all();
-
-    Product::create($input);
+    Product::create($request->all());
 
     return Redirect::to('products');
   }

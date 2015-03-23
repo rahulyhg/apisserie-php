@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUniqueFlagToName extends Migration {
+class CreateSectionsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,12 @@ class AddUniqueFlagToName extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('products', function($table)
+		Schema::create('sections', function(Blueprint $table)
 		{
-				$table->unique('name');
+			$table->increments('id');
+			$table->string('name');
+			$table->integer('order')->default(1);
+			$table->timestamps();
 		});
 	}
 
@@ -25,10 +28,7 @@ class AddUniqueFlagToName extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('products', function($table)
-		{
-				$table->dropUnique('name');
-		});
+		Schema::drop('sections');
 	}
 
 }

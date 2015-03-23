@@ -15,8 +15,13 @@ class CreateProductsTable extends Migration {
 		Schema::create('products', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
+			$table->string('name')->unique();
+			$table->integer('section_id')->unsigned();
 			$table->timestamps();
+
+			$table->foreign('section_id')
+						->references('id')
+						->on('sections');
 		});
 	}
 
@@ -27,7 +32,7 @@ class CreateProductsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+		Schema::drop('products');
 	}
 
 }

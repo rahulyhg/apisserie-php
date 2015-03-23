@@ -11,16 +11,24 @@
 |
 */
 
-Route::get( '/', function() { return Redirect::to('products'); });
+Route::get( '/', function()
+{
+  return redirect('products');
+});
 
 Route::group(['prefix' => 'products'], function()
 {
-  Route::get( '/', 'ProductsController@index' );
-
-  Route::post( '/', 'ProductsController@store' );
+  Route::get(  '/',      'ProductsController@index' );
+  Route::post( 'create', 'ProductsController@store' );
 });
 
-//Route::get( '/', 'ProductsController@index' );
+Route::group(['prefix' => 'sections'], function()
+{
+  Route::get(  '/',      'SectionsController@index' );
+  Route::post( 'create', 'SectionsController@store' );
+});
+
+
 
 /*
 Route::controllers([
