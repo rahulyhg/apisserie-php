@@ -28,6 +28,7 @@ Route::group(['prefix' => 'sections'], function()
   Route::post( 'create', 'SectionsController@store' );
 });
 
+Route::get( 'print', 'PagesController@toPrint' );
 
 
 /*

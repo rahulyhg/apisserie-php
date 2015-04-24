@@ -59,36 +59,3 @@
   </div>
 
 @stop
-
-@section('print')
-@if(0)
-  <!-- Print -->
-
-  <div id="print">
-
-    <?php foreach ( $data as $sid => $products ) : ?>
-
-      <section data-sid="<?php echo $sid ?>">
-        <h1><?php echo $names['sections'][$sid] ?></h1>
-        
-        <ul>
-
-          <?php foreach ( $products as $pid ) : ?>
-
-            <li data-pid="<?php echo $pid ?>">
-                <img src="<?php echo URL ?>/public/img/checkbox.svg">
-                <span>
-                  <?php echo $names['products'][$pid] ?>
-                </span>
-            </li>
-
-          <?php endforeach ?>
-
-        </ul>
-      </section>
-
-    <?php endforeach ?>
-
-  </div>
-@endif
-@stop

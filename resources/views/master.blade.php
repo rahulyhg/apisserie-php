@@ -11,7 +11,6 @@
   <body>
 		
 		@yield('content')
-    @yield('print')
 
 	  <script src="{{ url('/') }}/js/jquery.2.1.1.min.js"></script>
     <script src="{{ url('/') }}/js/scripts.min.js"></script>
