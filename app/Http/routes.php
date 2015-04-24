@@ -31,9 +31,13 @@ Route::group(['prefix' => 'sections'], function()
 Route::get( 'print', 'PagesController@toPrint' );
 
 
-/*
-Route::controllers([
-	'auth' => 'Auth\AuthController',
+Route::get( 'auth/register', function()
+{
+  return redirect('auth/login');
+});
+
+Route::controllers(
+[
+	'auth'     => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-*/

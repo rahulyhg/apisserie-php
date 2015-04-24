@@ -13,7 +13,23 @@
         <li class="clear-all">
           <span>Clear items</span>
         </li>
+
+        @if ( Auth::guest() )
+          
+          <li>
+            <a href="auth/login">Login</a>
+          </li>
+
+        @endif
+
       </ul>
+
+      @if ( Auth::check() )
+
+        Logged in as {{ Auth::user()->name }}
+
+      @endif
+
     </header>
 
     <main>
