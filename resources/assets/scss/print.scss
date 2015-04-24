@@ -5,10 +5,9 @@ body
 
 section
 {
-  display: none;
-  width: 50%;
-  padding-left: 5%;
+  width: 48%;
   float: left;
+  margin-left: 2%;
 
   h1
   {
@@ -18,20 +17,14 @@ section
     color: #CCC;
     font-size: 90%;
   }
-
-  &.show
-  {
-    display: block;
-  }
 }
 
 ul
 {
-  padding: 0;
+  padding: 0 4%;
 
   li
   {
-    display: none;
     position: relative;
     margin-top: 3pt;
 
@@ -52,11 +45,6 @@ ul
     span
     {
       font-size: 12pt;
-    }
-
-    &.show
-    {
-      display: block;
     }
   }
 }

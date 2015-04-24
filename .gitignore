@@ -3,3 +3,4 @@
 .env
 .DS_Store
 public/css/.sass-cache
+.sass-cache

@@ -6,10 +6,10 @@
 
     <title>A'pisserie</title>
 
-    <link href="{{ url('/') }}/css/style.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/print.css" rel="stylesheet">
   </head>
   <body>
-    
+
     <!-- Print -->
 
     <div id="print">
@@ -18,7 +18,7 @@
 
         <section data-sid="{{ $section_id }}">
           <h1>{{ $sections->where( 'id', $section_id, false )->first()->name }}</h1>
-          
+
           <ul>
 
             <?php foreach ( $products as $product ) : ?>
