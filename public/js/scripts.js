@@ -32,13 +32,6 @@ $(function()
                 window.PRODUCTS[pid].drop();
             }
         }
-
-        this.printList = function (e)
-        {
-            e.preventDefault();
-
-            window.print();
-        }
     }
 
     window.BAG = new Bag();
@@ -64,10 +57,6 @@ $(function()
         // product ID
         this.ID = parseInt(this.container.attr('data-pid'));
 
-        // fetch print element and parent
-        this.printContainer = $('#print').find('[data-pid='+_this.ID+']');
-        this.printSection   = this.printContainer.parents('section');
-
         // product selected yes/no
         this.active = false;
 
@@ -85,9 +74,6 @@ $(function()
             _this.active = true;
 
             BAG.addItem( _this.ID );
-
-            _this.printContainer.addClass('show');
-            _this.printSection.addClass('show');
         }
 
         // unset active
@@ -102,13 +88,6 @@ $(function()
             _this.active = false;
 
             BAG.removeItem( _this.ID );
-
-            _this.printContainer.removeClass('show');
-
-            if ( _this.printSection.find('li.show').length === 0 )
-            {
-                _this.printSection.removeClass('show');
-            }
         }
 
         this.construct();
@@ -173,9 +152,6 @@ $(function()
     ------------------------------------------ */
 
     $('#main-header .clear-all').on( 'click', window.BAG.clearAll );
-
-
-    $('#main-header .print').on( 'click', window.BAG.printList );
 
 
 
