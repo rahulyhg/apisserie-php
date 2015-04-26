@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get( '/', function()
 {
   return redirect('products');
@@ -35,6 +36,7 @@ Route::get( 'auth/register', function()
 {
   return redirect('auth/login');
 });
+
 
 Route::controllers(
 [
