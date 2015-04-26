@@ -2,76 +2,76 @@
 
 @section('content')
 
-  <div id="screen" class="admin">
+<div id="screen" class="admin">
 
     <header id="main-header">
-      <h1>A'pisserie</h1>
-      <ul>
-        <li class="print">
-          <span>Print</span>
-        </li>
-        <li class="clear-all">
-          <span>Clear items</span>
-        </li>
+        <h1>A'pisserie</h1>
+        <ul>
+            <li class="print">
+                <span>Print</span>
+            </li>
+            <li class="clear-all">
+                <span>Clear items</span>
+            </li>
 
-        @if ( Auth::guest() )
-          
-          <li>
-            <a href="auth/login">Login</a>
-          </li>
+            @if ( Auth::guest() )
+
+                <li>
+                    <a href="auth/login">Login</a>
+                </li>
+
+            @endif
+
+        </ul>
+
+        @if ( Auth::check() )
+
+            Logged in as {{ Auth::user()->name }}
 
         @endif
-
-      </ul>
-
-      @if ( Auth::check() )
-
-        Logged in as {{ Auth::user()->name }}
-
-      @endif
 
     </header>
 
     <main>
 
-      @if ( $errors->any() )
+        @if ( $errors->any() )
 
-        <div class="ui-notification error">
+            <div class="ui-notification error">
 
-          @foreach ( $errors->all() as $error )
+                @foreach ( $errors->all() as $error )
 
-            {{ $error }}
-        
-          @endforeach 
+                    {{ $error }}
 
-        </div>
+                @endforeach
 
-      @endif
+            </div>
 
-      <section class="section">
+        @endif
 
-        <ul>
+        <section class="section">
 
-          @foreach ( $products as $product )
+            <ul>
 
-            <li class="product" data-pid="{{ $product->id }}">
-              <div>
-                <span class="name">
-                  {{ $product->name }}
-                </span>
-                <input type="text">
-                <div class="remove"></div>
-              </div>
-            </li>
+                @foreach ( $products as $product )
 
-          @endforeach
+                    <li class="product" data-pid="{{ $product->id }}">
+                        <div>
+                            <span class="name">
+                                {{ $product->name }}
+                            </span>
+                            <input type="text">
+                            <div class="remove"></div>
+                        </div>
+                    </li>
 
-        </ul>
+                @endforeach
 
-      </section>
+            </ul>
+
+        </section>
 
     </main>
 
-  </div>
+</div>
 
 @stop
