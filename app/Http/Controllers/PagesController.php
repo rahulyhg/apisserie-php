@@ -21,7 +21,8 @@ class PagesController extends Controller
       $grouped_products[$section->id] = $products->where( 'section_id', $section->id );
     }
 
-    return view('print')->withProducts($grouped_products)->withSections($sections);
+    return view('print')->with( 'products', $grouped_products )
+                        ->with( 'sections', $sections );
   }
 
 }
