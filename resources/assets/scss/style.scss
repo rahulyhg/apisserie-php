@@ -1,4 +1,3 @@
-//@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
 
 * { box-sizing: border-box }
 
@@ -12,9 +11,4 @@ input
   @import 'ui';
   @import 'screen';
   @import 'admin';
-
-  #print
-  {
-    display: none;
-  }
 }
