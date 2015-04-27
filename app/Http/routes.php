@@ -25,7 +25,6 @@ Route::group(['prefix' => 'products'], function()
 
 Route::group(['prefix' => 'sections'], function()
 {
-  Route::get(  '/',      'SectionsController@index' );
   Route::post( 'create', 'SectionsController@store' );
 });
 
