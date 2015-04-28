@@ -1,0 +1,81 @@
+
+$green: green;
+
+$serif:   'Lato', Helvetica, sans-serif;
+$cursive: 'Boogaloo', cursive;
+
+* { box-sizing: border-box }
+
+body
+{
+    margin: 0;
+    background: #F5F5F5;
+    font-family: $serif;
+    font-size: 16px;
+}
+
+main
+{
+    position: relative;
+    height: 100vh;
+
+    #login
+    {
+        position: relative;
+        top: 50%;
+        width: 380px;
+        margin: 0 auto;
+        background: #191919;
+        transform: translateY(-50%);
+
+        h1
+        {
+            padding: 30px;
+            margin: 0;
+            background: #111;
+            font-weight: bold;
+            font-size: 3.6em;
+            text-align: center;
+            color: rgb(107,212,165);
+            font-family: $cursive;
+        }
+
+        form
+        {
+            padding: 30px;
+        }
+
+        .field
+        {
+            margin-bottom: 0.5em;
+        }
+
+        input[type=password],
+        input[type=email]
+        {
+            display: block;
+            width: 100%;
+            padding: 0.5em;
+            border: none;
+            font-size: 1.2em;
+        }
+
+        button
+        {
+            display: block;
+            width: 100%;
+            padding: 0.6em 0;
+            border: none;
+            cursor: pointer;
+            background: hsl( 153, 50%, 50% );
+            color: #111;
+            font-size: 1.4em;
+            text-align: center;
+
+            &:hover
+            {
+                background: hsl( 153, 45%, 30% );
+            }
+        }
+    }
+}

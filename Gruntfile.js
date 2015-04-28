@@ -8,6 +8,7 @@ module.exports = function(grunt)
 
   scssFiles[cssPath + 'style.css'] = scssPath + 'style.scss';
   scssFiles[cssPath + 'print.css'] = scssPath + 'print.scss';
+  scssFiles[cssPath + 'login.css'] = scssPath + 'login.scss';
 
   grunt.initConfig(
   {
