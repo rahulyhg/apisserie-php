@@ -1,86 +1,13 @@
-$green: green;
-
-$serif:   'Lato', Helvetica, sans-serif;
-$cursive: 'Boogaloo', cursive;
-
-
-body
+#sidebar
 {
-    margin: 0;
-    background: #F5F5F5;
-    font-family: $serif;
-    font-size: 16px;
-}
-
-.float-wrap
-{
-    overflow: hidden;
-}
-
-#main-header
-{
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 300px;
     height: 100vh;
-    padding: 0.5em;
     background: #191919;
     color: white;
     z-index: 5000;
-
-    h1
-    {
-        margin: 0.5em 0 0 0;
-        font-weight: bold;
-        font-size: 3em;
-        text-align: center;
-        color: rgb(107,212,165);
-        font-family: $cursive;
-    }
-
-    ul
-    {
-        padding: 0;
-        margin: 3.5em auto 0;
-        width: 200px;
-        text-align: center;
-
-        li
-        {
-            margin: 0 0 10px 0;
-            list-style-type: none;
-
-            a, span
-            {
-                display: block;
-                padding: 0.5em;
-                background: #000;
-                cursor: pointer;
-                text-decoration: none;
-                color: white;
-                transition: 50ms ease-out;
-                transform: scale(1);
-
-                &:hover
-                {
-                    background: rgb(107,212,165);
-                    text-shadow: 0 1px 1px black;
-                    transform: scale(1.05);
-                }
-            }
-
-            &.clear-all
-            {
-                font-weight: bold;
-
-                span:hover
-                {
-                    background: #C00;
-                }
-            }
-        }
-    }
 }
 
 main
@@ -89,12 +16,63 @@ main
     top: 0;
     right: 0;
     width: calc( 100% - 300px );
-    padding: 50px;
 
     & > h1
     {
         margin-top: 0;
     }
+
+    .top
+    {
+        position: relative;
+        height: 150px;
+        background: #EEE;
+    }
+
+    .form
+    {
+        position: relative;
+        top: 50%;
+        padding: 50px;
+        font-size: 1.1em;
+        transform: translateY(-50%);
+
+        h2
+        {
+            margin: 0 0 0.7em 0;
+            font-size: 1.2em;
+            color: #444;
+        }
+
+        input[type=text]
+        {
+            padding: 0.5em;
+        }
+
+        select
+        {
+            padding: 0.5em;
+        }
+
+        button
+        {
+            padding: 0.5em 0.7em;
+            border: none;
+            cursor: pointer;
+            background: hsl( 153, 50%, 50% );
+            color: white;
+
+            &:hover
+            {
+                background: hsl( 153, 45%, 30% );
+            }
+        }
+    }
+}
+
+#products
+{
+    padding: 50px;
 }
 
 .section

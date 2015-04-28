@@ -4,13 +4,23 @@
 
 @if ( Auth::check() )
 
-    {!! Form::open([ 'url' => 'products/create' ]) !!}
+    <div class="top">
 
-        {!! Form::text( 'name' ) !!}
-        {!! Form::select( 'section_id', $indexedSections ) !!}
-        {!! Form::submit() !!}
+        <div class="form">
 
-    {!! Form::close() !!}
+            <h2>Add an item</h2>
+
+            {!! Form::open([ 'url' => 'products/create' ]) !!}
+
+                {!! Form::text( 'name' ) !!}
+                {!! Form::select( 'section_id', $indexedSections ) !!}
+                {!! Form::button( 'Add item', [ 'type' => 'submit' ] ) !!}
+
+            {!! Form::close() !!}
+
+        </div>
+
+    </div>
 
 @endif
 
@@ -28,26 +38,30 @@
 
 @endif
 
-<section class="section">
+<div id="products">
 
-    <ul>
+    <section class="section">
 
-        @foreach ( $products as $product )
+        <ul>
 
-            <li class="product" data-pid="{{ $product->id }}">
-                <div>
-                    <span class="name">
-                        {{ $product->name }}
-                    </span>
-                    <input type="text">
-                    <div class="remove"></div>
-                </div>
-            </li>
+            @foreach ( $products as $product )
 
-        @endforeach
+                <li class="product" data-pid="{{ $product->id }}">
+                    <div>
+                        <span class="name">
+                            {{ $product->name }}
+                        </span>
+                        <input type="text">
+                        <div class="remove"></div>
+                    </div>
+                </li>
 
-    </ul>
+            @endforeach
 
-</section>
+        </ul>
+
+    </section>
+
+</div>
 
 @stop

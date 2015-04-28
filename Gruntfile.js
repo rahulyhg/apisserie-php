@@ -17,8 +17,7 @@ module.exports = function(grunt)
       {
         options :
         {
-          style: 'compressed',
-          sourcemap: 'none'
+          style: 'compressed'
         },
         files : scssFiles
       }

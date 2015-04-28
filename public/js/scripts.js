@@ -151,7 +151,7 @@ $(function()
     /* Header
     ------------------------------------------ */
 
-    $('#main-header .clear-all').on( 'click', window.BAG.clearAll );
+    $('#sidebar header .clear-all').on( 'click', window.BAG.clearAll );
 
 
 

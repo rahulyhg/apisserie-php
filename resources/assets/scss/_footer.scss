@@ -1,0 +1,21 @@
+#sidebar footer
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: #111;
+    text-align: center;
+
+    .logged-as
+    {
+        font-size: 0.8em;
+        color: #444;
+
+        a
+        {
+            color: #666;
+        }
+    }
+}

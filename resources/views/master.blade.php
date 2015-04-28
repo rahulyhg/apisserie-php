@@ -12,35 +12,48 @@
     </head>
     <body>
 
-        <header id="main-header">
+        <div id="sidebar">
 
-            <h1>Apisserie</h1>
+            <header>
 
-            <ul>
-                <li class="print">
-                    <a href="/print">Print</a>
-                </li>
-                <li class="clear-all">
-                    <span>Clear items</span>
-                </li>
+                <div class="title">
+                    <h1>Apisserie</h1>
+                </div>
 
-                @if ( Auth::guest() )
-
-                    <li>
-                        <a href="auth/login">Login</a>
+                <ul>
+                    <li class="print">
+                        <a href="/print">Print</a>
+                    </li>
+                    <li class="clear-all">
+                        <a href="#">Clear items</a>
                     </li>
 
-                @endif
+                    @if ( Auth::guest() )
 
-            </ul>
+                        <li>
+                            <a href="auth/login">Login</a>
+                        </li>
+
+                    @endif
+
+                </ul>
+
+            </header>
 
             @if ( Auth::check() )
 
-                Logged in as {{ Auth::user()->name }}
+                <footer>
+
+                    <span class="logged-as">
+                        Logged in as {{ Auth::user()->name }}.
+                        <a href="auth/logout">Logout</a>
+                    </span>
+
+                </footer>
 
             @endif
 
-        </header>
+        </div>
 
         <main>
 

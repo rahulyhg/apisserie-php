@@ -1,4 +1,23 @@
 
+$green: green;
+
+$serif:   'Lato', Helvetica, sans-serif;
+$cursive: 'Boogaloo', cursive;
+
+
+body
+{
+    margin: 0;
+    background: #F5F5F5;
+    font-family: $serif;
+    font-size: 16px;
+}
+
+.float-wrap
+{
+    overflow: hidden;
+}
+
 * { box-sizing: border-box }
 
 input
@@ -6,9 +25,8 @@ input
   margin: 0;
 }
 
-@media screen
-{
-  @import 'ui';
-  @import 'screen';
-  @import 'admin';
-}
+@import 'ui';
+@import 'layout';
+@import 'header';
+@import 'footer';
+//@import 'admin';
