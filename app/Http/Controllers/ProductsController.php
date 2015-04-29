@@ -13,21 +13,21 @@ class ProductsController extends Controller
         $products = Product::all()->sortBy('name');
         $sections = Section::all();
 
-        $indexed_sections = [];
-
         foreach ( $sections as $section )
         {
             $indexed_sections[$section->id] = $section->name;
         }
 
-        return view('products.index')->with( 'products', $products )->with( 'indexedSections', $indexed_sections );
+        return view('products.index')
+                ->with( 'products', $products )
+                ->with( 'sections', $indexed_sections );
     }
 
     public function store ( CreateProductRequest $request )
     {
-        Product::create($request->all());
+        $product = Product::create($request->all());
 
-        return Redirect::to('products');
+        return redirect('products')->with( 'notification', 'Product added : ' . $product->name );
     }
 
 }

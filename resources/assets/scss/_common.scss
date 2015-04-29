@@ -1,0 +1,31 @@
+$theme-color: hsl( 150, 50%, 50% );
+
+$serif:   'Lato', Helvetica, sans-serif;
+$cursive: 'Boogaloo', cursive;
+
+
+body
+{
+    margin: 0;
+    background: #F5F5F5;
+    font-family: $serif;
+    font-size: 16px;
+}
+
+ul, ol
+{
+    padding: 0;
+    margin: 0;
+}
+
+.float-wrap
+{
+    overflow: hidden;
+}
+
+* { box-sizing: border-box }
+
+input
+{
+  margin: 0;
+}

@@ -12,8 +12,22 @@
 
             {!! Form::open([ 'url' => 'products/create' ]) !!}
 
-                {!! Form::text( 'name' ) !!}
-                {!! Form::select( 'section_id', $indexedSections ) !!}
+                {!! Form::text( 'name', null, [ 'required' ] ) !!}
+
+                <select name="section_id" required>
+
+                    <option value="" disabled selected>
+                        Choose...
+                    </option>
+
+                    @foreach ( $sections as $id => $name )
+
+                        <option value="{{ $id }}">{{ $name }}</option>
+
+                    @endforeach
+
+                </select>
+
                 {!! Form::button( 'Add item', [ 'type' => 'submit' ] ) !!}
 
             {!! Form::close() !!}
@@ -24,43 +38,27 @@
 
 @endif
 
-@if ( $errors->any() )
+<div class="list">
 
-    <div class="ui-notification error">
+    <ul>
 
-        @foreach ( $errors->all() as $error )
+        @foreach ( $products as $product )
 
-            {{ $error }}
+            <li data-pid="{{ $product->id }}">
+                <div>
+                    <span class="name">
+                        {{ $product->name }}
+                    </span>
+                    <span class="section">
+                        ({{ $sections[$product->section_id] }})
+                    </span>
+                    <div class="remove"></div>
+                </div>
+            </li>
 
         @endforeach
 
-    </div>
-
-@endif
-
-<div id="products">
-
-    <section class="section">
-
-        <ul>
-
-            @foreach ( $products as $product )
-
-                <li class="product" data-pid="{{ $product->id }}">
-                    <div>
-                        <span class="name">
-                            {{ $product->name }}
-                        </span>
-                        <input type="text">
-                        <div class="remove"></div>
-                    </div>
-                </li>
-
-            @endforeach
-
-        </ul>
-
-    </section>
+    </ul>
 
 </div>
 

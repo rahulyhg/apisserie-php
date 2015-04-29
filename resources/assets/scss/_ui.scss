@@ -1,21 +1,30 @@
 .ui-notification
 {
-  margin: 1em 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: 0.5em 0.7em;
-  background-color: white;
-  border-left: 4px solid;
   box-shadow: 0 0 2px #CCC;
-  color: #333;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 0.7em;
+  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+  z-index: 10000;
+  -webkit-animation: notificationSlide 800ms ease-out;
 
   &.success
   {
-    border-left-color: #090;
+    background-color: hsl(93, 60%, 40%);
   }
 
   &.error
   {
-    border-left-color: #900;
+    background-color: hsl(36, 82%, 52%);
   }
+}
+
+@-webkit-keyframes notificationSlide
+{
+  from { transform: translateY(-100%) }
+  to   { transform: translateY(0)     }
 }

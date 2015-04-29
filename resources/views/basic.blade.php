@@ -12,11 +12,29 @@
     </head>
     <body>
 
-        <main>
+        <div id="main-wrap">
 
-            @yield('content')
+            @if ( $errors->any() )
 
-        </main>
+                <div class="ui-notification error">
+
+                    @foreach ( $errors->all() as $error )
+
+                        {{ $error }}
+
+                    @endforeach
+
+                </div>
+
+            @endif
+
+            <main>
+
+                @yield('content')
+
+            </main>
+
+        </div>
 
     </body>
 </html>

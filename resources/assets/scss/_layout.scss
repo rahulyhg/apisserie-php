@@ -1,6 +1,6 @@
 #sidebar
 {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 300px;
@@ -26,7 +26,7 @@ main
     {
         position: relative;
         height: 150px;
-        background: #EEE;
+        background: lighten($theme-color,40%);
     }
 
     .form
@@ -59,167 +59,34 @@ main
             padding: 0.5em 0.7em;
             border: none;
             cursor: pointer;
-            background: hsl( 153, 50%, 50% );
+            background: $theme-color;
             color: white;
+            font-weight: bold;
 
             &:hover
             {
-                background: hsl( 153, 45%, 30% );
+                background: lighten($theme-color,5%);
             }
         }
     }
 }
 
-#products
+.list
 {
-    padding: 50px;
-}
-
-.section
-{
-    width: 95%;
-    max-width: 600px;
-
-    header
-    {
-        position: relative;
-        margin: 1.1em 0 0.3em 0;
-        font-size: 2em;
-
-        .toggle
-        {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            font-size: 0.4em;
-            color: #999;
-            cursor: pointer;
-
-            &:hover
-            {
-                color: #333;
-                background: white;
-            }
-        }
-    }
-
-    h1
-    {
-        margin: 0;
-        color: #666;
-        font-size: 1em;
-        text-align: center;
-        text-shadow: 0 2px 0 white;
-    }
-
     ul
     {
-        padding: 0;
-        margin: 0.3em 0 0 0;
+
+    }
+
+    li
+    {
+        padding: 0.6em 1em;
+        background: white;
         list-style-type: none;
-        border: 1px solid #DDD;
-        box-shadow: 0 1px 4px #EEE;
-        font-size: 1.1em;
-    }
 
-    &.hide
-    {
-        ul
+        &:nth-child(even)
         {
-            display: none;
-        }
-    }
-}
-
-.product
-{
-    padding-left: 2px;
-    border-bottom: 1px solid #DDD;
-    background: #DDD;
-    color: #888;
-    transition: all 100ms ease-out;
-
-    & > div
-    {
-        position: relative;
-        padding: 0.35em 0.5em 0.3em;
-        background: #FCFCFC;
-    }
-
-    input
-    {
-        display: none;
-        padding: 0.4em;
-        min-width: 30px;
-        border-radius: 4px;
-        border: 1px solid #DDD;
-        opacity: 0;
-        outline: none;
-        background: transparent;
-        color: #999;
-        font-size: 0.7em;
-
-        &:focus
-        {
-            background: white;
-            border: none;
-            box-shadow: 0 0 4px #090;
-        }
-    }
-
-    .remove
-    {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        top: 7px;
-        right: 7px;
-        opacity: 0;
-        cursor: pointer;
-        background: url('../img/can.svg') no-repeat center center;
-        background-size: 100% 100%;
-        transform: scale(0);
-        font-size: 0.5em;
-        color: #200;
-    }
-
-    &:hover
-    {
-        background: $green;
-    }
-
-    &.selected
-    {
-        padding-left: 10px;
-        font-weight: bold;
-        color: #003300;
-        background: $green;
-
-        .remove
-        {
-            opacity: 0.6;
-            transform: scale(0.8);
-
-            &:hover
-            {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    }
-
-    &:last-child
-    {
-        border-bottom: none;
-    }
-
-    &:not(.selected)
-    {
-        cursor: pointer;
-
-        &:hover
-        {
-            border-left-color: $green;
+            background: #F3F3F3;
         }
     }
 }
