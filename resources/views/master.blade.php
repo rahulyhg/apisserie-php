@@ -26,7 +26,7 @@
 
             @endif
 
-            <div id="sidebar">
+            <div id="column-1">
 
                 <header>
 
@@ -64,11 +64,7 @@
 
             </div>
 
-            <main>
-
-                @yield('content')
-
-            </main>
+            @yield('content')
 
         </div>
 

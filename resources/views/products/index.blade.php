@@ -2,41 +2,13 @@
 
 @section('content')
 
-<div class="top">
+<div id="column-2">
 
-    <div class="form">
+    <nav>
 
-        <h2>Add an item</h2>
-
-        {!! Form::open([ 'url' => 'products/create' ]) !!}
-
-            {!! Form::text( 'name', null, [ 'required' ] ) !!}
-
-            <select name="section_id" required>
-
-                <option value="" disabled selected>
-                    Choose...
-                </option>
-
-                @foreach ( $sections as $id => $name )
-
-                    <option value="{{ $id }}">{{ $name }}</option>
-
-                @endforeach
-
-            </select>
-
-            {!! Form::button( 'Add item', [ 'type' => 'submit' ] ) !!}
-
-        {!! Form::close() !!}
-
-    </div>
-
-</div>
-
-<div id="products">
-
-    <div class="nav">
+        <div class="title">
+            <h1>Sections</h1>
+        </div>
 
         <ul>
 
@@ -54,9 +26,47 @@
 
         </ul>
 
-    </div>
+    </nav>
+
+</div>
+
+
+<div id="column-3">
 
     <div class="list">
+
+        <div class="top">
+
+            <div class="form">
+
+                {!! Form::open([ 'url' => 'products/create' ]) !!}
+
+                    <fieldset>
+
+                        {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+
+                        <select name="section_id" required>
+
+                            <option value="" disabled selected>
+                                Choose...
+                            </option>
+
+                            @foreach ( $sections as $id => $name )
+
+                                <option value="{{ $id }}">{{ $name }}</option>
+
+                            @endforeach
+
+                        </select>
+
+                    </fieldset>
+
+                    <button type="submit"></button>
+
+                {!! Form::close() !!}
+
+            </div>
+        </div>
 
         <ul>
 
@@ -79,7 +89,6 @@
         </ul>
 
     </div>
-
 </div>
 
 @stop

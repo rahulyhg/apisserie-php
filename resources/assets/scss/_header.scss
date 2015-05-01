@@ -1,23 +1,21 @@
-#sidebar header
+#column-1 header
 {
     .title
     {
+        display: flex;
         position: relative;
-        height: 150px;
+        height: $top-row-height;
         background: #111;
     }
 
     h1
     {
-        position: relative;
-        top: 50%;
-        margin: 0;
+        margin: auto;
         font-weight: bold;
         font-size: 3em;
         text-align: center;
         color: $theme-color;
         font-family: $cursive;
-        transform: translateY(-50%);
     }
 
     ul
