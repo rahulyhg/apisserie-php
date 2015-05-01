@@ -12,6 +12,7 @@ module.exports = function(grunt)
 
   grunt.initConfig(
   {
+
     sass :
     {
       dist :
@@ -22,11 +23,28 @@ module.exports = function(grunt)
         },
         files : scssFiles
       }
+    },
+
+    autoprefixer :
+    {
+      options :
+      {
+        browsers : [ 'last 1 version', '> 5%' ],
+        remove   : false
+      },
+
+      single_file :
+      {
+        src : 'public/css/style.css',
+        src : 'public/css/login.css'
+      }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
+  //grunt.loadNpmTasks('grunt-autoprefixer');
 
-  grunt.registerTask('default', ['sass']);
+  grunt.registerTask( 'default', [ 'sass' ] );
 
 }
