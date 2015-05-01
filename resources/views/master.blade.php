@@ -54,17 +54,13 @@
 
                 </header>
 
-                @if ( Auth::check() )
+                <footer>
 
-                    <footer>
+                    <span class="logged-as">
+                        <a href="auth/logout">Logout</a>
+                    </span>
 
-                        <span class="logged-as">
-                            <a href="auth/logout">Logout</a>
-                        </span>
-
-                    </footer>
-
-                @endif
+                </footer>
 
             </div>
 

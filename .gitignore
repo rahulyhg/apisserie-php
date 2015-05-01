@@ -4,3 +4,5 @@
 .DS_Store
 public/css/.sass-cache
 .sass-cache
+public/css/login.css.map
+public/css/style.css.map

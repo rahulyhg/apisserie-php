@@ -2,63 +2,83 @@
 
 @section('content')
 
-@if ( Auth::check() )
+<div class="top">
 
-    <div class="top">
+    <div class="form">
 
-        <div class="form">
+        <h2>Add an item</h2>
 
-            <h2>Add an item</h2>
+        {!! Form::open([ 'url' => 'products/create' ]) !!}
 
-            {!! Form::open([ 'url' => 'products/create' ]) !!}
+            {!! Form::text( 'name', null, [ 'required' ] ) !!}
 
-                {!! Form::text( 'name', null, [ 'required' ] ) !!}
+            <select name="section_id" required>
 
-                <select name="section_id" required>
+                <option value="" disabled selected>
+                    Choose...
+                </option>
 
-                    <option value="" disabled selected>
-                        Choose...
-                    </option>
+                @foreach ( $sections as $id => $name )
 
-                    @foreach ( $sections as $id => $name )
+                    <option value="{{ $id }}">{{ $name }}</option>
 
-                        <option value="{{ $id }}">{{ $name }}</option>
+                @endforeach
 
-                    @endforeach
+            </select>
 
-                </select>
+            {!! Form::button( 'Add item', [ 'type' => 'submit' ] ) !!}
 
-                {!! Form::button( 'Add item', [ 'type' => 'submit' ] ) !!}
-
-            {!! Form::close() !!}
-
-        </div>
+        {!! Form::close() !!}
 
     </div>
 
-@endif
+</div>
 
-<div class="list">
+<div id="products">
 
-    <ul>
+    <div class="nav">
 
-        @foreach ( $products as $product )
+        <ul>
 
-            <li data-pid="{{ $product->id }}">
-                <div>
-                    <span class="name">
-                        {{ $product->name }}
-                    </span>
-                    <span class="section">
-                        ({{ $sections[$product->section_id] }})
-                    </span>
-                    <div class="remove"></div>
-                </div>
+            <li class="active">
+                <a href="#">All</a>
             </li>
 
-        @endforeach
+            @foreach ( $sections as $id => $name )
 
-    </ul>
+                <li>
+                    <a href="#">{{ $name }}</a>
+                </li>
+
+            @endforeach
+
+        </ul>
+
+    </div>
+
+    <div class="list">
+
+        <ul>
+
+            @foreach ( $products as $product )
+
+                <li data-pid="{{ $product->id }}">
+                    <div>
+                        <span class="name">
+                            {{ $product->name }}
+                        </span>
+                        <span class="section">
+                            ({{ $sections[$product->section_id] }})
+                        </span>
+                        <div class="remove"></div>
+                    </div>
+                </li>
+
+            @endforeach
+
+        </ul>
+
+    </div>
 
 </div>
 

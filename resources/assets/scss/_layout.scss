@@ -71,22 +71,58 @@ main
     }
 }
 
-.list
+#products
 {
-    ul
-    {
+    background: #555;
+    overflow: hidden;
 
+    .nav
+    {
+        float: left;
+        width: 250px;
+
+        li
+        {
+            a
+            {
+                display: block;
+                padding: 0.5em;
+                color: white;
+                text-decoration: none;
+            }
+
+            &.active
+            {
+                background: $theme-color;
+            }
+
+            &:nth-child(even)
+            {
+                background: #666;
+            }
+        }
     }
 
-    li
+    .list
     {
-        padding: 0.6em 1em;
-        background: white;
-        list-style-type: none;
+        float: left;
+        width: calc( 100% - 250px );
 
-        &:nth-child(even)
+        ul
         {
-            background: #F3F3F3;
+
+        }
+
+        li
+        {
+            padding: 0.6em 1em;
+            background: white;
+            list-style-type: none;
+
+            &:nth-child(even)
+            {
+                background: #F3F3F3;
+            }
         }
     }
 }
