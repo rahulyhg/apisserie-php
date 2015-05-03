@@ -5,22 +5,54 @@ $(function()
 
 
 
+    var PrintFrame = function ()
+    {
+        var $this = this;
+
+        this.iframe = $('#print-frame')[0];
+
+
+        this.refresh = function ()
+        {
+            $this.iframe.src = $this.iframe.src;
+        }
+
+        this.print = function ()
+        {
+            $this.iframe.contentWindow.print();
+        }
+    }
+
+
+
+    // register print iframe
+    window.printFrame = new PrintFrame();
+
+    $('#sidebar .print a').on('click',function(e)
+    {
+        e.preventDefault();
+
+        window.printFrame.print();
+    })
+
     /* Shopping Bag
     ------------------------------------------ */
 
     var Bag = function ()
     {
-        var _this = this;
+        var $this = this;
 
 
         this.addItem = function ( pid )
         {
             localStorage[pid] = true;
+            window.printFrame.refresh();
         }
 
         this.removeItem = function ( pid )
         {
             localStorage[pid] = false;
+            window.printFrame.refresh();
         }
 
         this.clearAll = function ( e )
@@ -48,7 +80,7 @@ $(function()
 
     var Product = function ( container )
     {
-        var _this = this;
+        var $this = this;
 
         // shortcuts
         this.container = container;
@@ -63,17 +95,17 @@ $(function()
 
         this.construct = function ()
         {
-            _this.container.on( 'click', _this.take );
-            _this.trash.on( 'click', _this.drop );
+            $this.container.on( 'click', $this.take );
+            $this.trash.on( 'click', $this.drop );
         }
 
         // set active
         this.take = function ()
         {
-            _this.container.addClass('selected');
-            _this.active = true;
+            $this.container.addClass('selected');
+            $this.active = true;
 
-            BAG.addItem( _this.ID );
+            BAG.addItem( $this.ID );
         }
 
         // unset active
@@ -84,10 +116,10 @@ $(function()
                 arguments[0].stopPropagation();
             }
 
-            _this.container.removeClass('selected');
-            _this.active = false;
+            $this.container.removeClass('selected');
+            $this.active = false;
 
-            BAG.removeItem( _this.ID );
+            BAG.removeItem( $this.ID );
         }
 
         this.construct();
@@ -114,7 +146,7 @@ $('[data-pid]').each( function()
 /*
     var Section = function ( container )
     {
-        var _this = this;
+        var $this = this;
 
         // shortcuts
         this.container = container;
@@ -126,14 +158,14 @@ $('[data-pid]').each( function()
 
         this.construct = function ()
         {
-            _this.container.find('.product').each( _this.registerProduct );
-            _this.toggle.on( 'click', _this.toggleList );
+            $this.container.find('.product').each( $this.registerProduct );
+            $this.toggle.on( 'click', $this.toggleList );
         }
 
         // show/hide section content
         this.toggleList = function ()
         {
-            _this.container.toggleClass('hide');
+            $this.container.toggleClass('hide');
         }
 
         // add products to the global list
@@ -146,7 +178,7 @@ $('[data-pid]').each( function()
             window.PRODUCTS[pid] = new Product( $(element) );
 
             // register pid in the section object
-            _this.products.push(pid);
+            $this.products.push(pid);
         }
 
         this.construct();

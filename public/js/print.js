@@ -5,10 +5,13 @@ $(function()
     {
         var pid = parseInt(localStorage.key(i));
 
-        $('.product[data-pid=' + pid + ']')
-            .addClass('selected')
-            .parents('.section')
-            .addClass('selected')
+        if ( localStorage[pid] === 'true' )
+        {
+            $('.product[data-pid=' + pid + ']')
+                .addClass('selected')
+                .parents('.section')
+                .addClass('selected')
+        }
     }
 
 })

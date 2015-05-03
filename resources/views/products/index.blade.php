@@ -106,6 +106,10 @@
         @endforeach
 
     </div>
+
+
+    <iframe src="{{ url('/print') }}" frameborder="0" id="print-frame"></iframe>
+
 </div>
 
 @stop
