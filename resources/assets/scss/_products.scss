@@ -1,0 +1,74 @@
+#products
+{
+    .list
+    {
+        h2
+        {
+            margin: 0;
+            padding: 0 0 10px 50px;
+            color: darken($theme-color,30%);
+            font-family: $cursive;
+        }
+
+        .group
+        {
+            margin: 30px 0;
+        }
+    }
+}
+
+.product
+{
+    display: flex;
+    position: relative;
+    height: 44px;
+    background: #f3f3f3;
+    cursor: pointer;
+    list-style-type: none;
+
+    .remove
+    {
+        width: 30px;
+        height: 30px;
+        margin: auto 15px auto 10px;
+        border-radius: 3px;
+        background: $theme-color url(../img/checkmark.svg) no-repeat center center;
+        background-size: 50%;
+        opacity: 0;
+        transform: scale(0.5);
+
+        &:hover
+        {
+            background-color: darken($theme-color,10%);
+            background-image: url(../img/delete.svg);
+        }
+    }
+
+    .name
+    {
+        margin: auto 0;
+    }
+
+    &.selected
+    {
+        color: darken($theme-color,20%);
+
+        .remove
+        {
+            opacity: 1;
+            transform: scale(1);
+            transition: 200ms ease-in-out;
+            transition-property: opacity, transform;
+        }
+    }
+
+    &:nth-child(even)
+    {
+        background-color: #e6e6e6;
+    }
+
+    &:hover
+    {
+        color: darken($theme-color,20%);
+    }
+}

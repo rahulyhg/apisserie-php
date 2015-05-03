@@ -95,9 +95,23 @@ $(function()
 
 
 
+
+$('[data-pid]').each( function()
+{
+    var p   = $(this);
+    var pid = parseInt(p.attr('data-pid'));
+
+    // register product in global product list
+    window.PRODUCTS[pid] = new Product( $(this) );
+})
+
+
+
+
+
     /* Sections
     ------------------------------------------ */
-
+/*
     var Section = function ( container )
     {
         var _this = this;
@@ -145,7 +159,7 @@ $(function()
     {
         window.Sections.push( new Section($(item)) );
     })
-
+*/
 
 
     /* Header

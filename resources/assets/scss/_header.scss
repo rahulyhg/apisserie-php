@@ -1,4 +1,4 @@
-#column-1 header
+#sidebar header
 {
     .title
     {
@@ -16,6 +16,7 @@
         text-align: center;
         color: $theme-color;
         font-family: $cursive;
+        -webkit-font-smoothing: subpixel-antialiased;
     }
 
     ul

@@ -26,7 +26,7 @@
 
             @endif
 
-            <div id="column-1">
+            <div id="sidebar" class="column">
 
                 <header>
 
@@ -41,24 +41,19 @@
                         <li class="clear-all">
                             <a href="#">Clear items</a>
                         </li>
-
-                        @if ( Auth::guest() )
-
-                            <li>
-                                <a href="auth/login">Login</a>
-                            </li>
-
-                        @endif
-
                     </ul>
 
                 </header>
 
                 <footer>
 
-                    <span class="logged-as">
+                    <p>
                         <a href="auth/logout">Logout</a>
-                    </span>
+                    </p>
+
+                    <p>
+                        Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
+                    </p>
 
                 </footer>
 
