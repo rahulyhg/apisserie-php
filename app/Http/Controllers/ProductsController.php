@@ -11,7 +11,7 @@ class ProductsController extends Controller
     public function index ()
     {
         $products = Product::all()->sortBy('name');
-        $sections = Section::all();
+        $sections = Section::all()->sortBy('order');
 
         foreach ( $sections as $section )
         {

@@ -10,7 +10,8 @@
   font-size: 0.9em;
   font-weight: bold;
   z-index: 10000;
-  animation: notificationSlide 800ms ease-out;
+  -webkit-animation: notificationSlide 4.2s ease-out;
+  -webkit-animation-fill-mode: both;
 
   &.success
   {
@@ -23,8 +24,10 @@
   }
 }
 
-@keyframes notificationSlide
+@-webkit-keyframes notificationSlide
 {
-  from { transform: translateY(-100%) }
-  to   { transform: translateY(0)     }
+  0%   { transform: translateY(-100%) }
+  10%  { transform: translateY(0)     }
+  90%  { transform: translateY(0)     }
+  100% { transform: translateY(-100%) }
 }
