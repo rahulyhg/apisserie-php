@@ -15,12 +15,24 @@ class ProductsController extends Controller
 
         foreach ( $sections as $section )
         {
-            $indexed_sections[$section->id] = $section->name;
+            $indexedSections[$section->id] = $section->name;
+        }
+
+        $groupedProducts = [];
+        foreach ( $products as $product )
+        {
+            $letter = substr( $product->name, 0, 1 );
+            if ( !isset($groupedProducts[$letter]) )
+            {
+                $groupedProducts[$letter] = [];
+            }
+
+            $groupedProducts[$letter][] = $product;
         }
 
         return view('products.index')
-                ->with( 'products', $products )
-                ->with( 'sections', $indexed_sections );
+                ->with( 'products', $groupedProducts )
+                ->with( 'sections', $indexedSections );
     }
 
     public function store ( CreateProductRequest $request )

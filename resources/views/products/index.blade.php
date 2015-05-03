@@ -1,8 +1,8 @@
 @extends('master')
 
-@section('content')
+@section('disabled')
 
-<div id="column-2">
+<div id="sections" class="column">
 
     <nav>
 
@@ -19,7 +19,7 @@
             @foreach ( $sections as $id => $name )
 
                 <li>
-                    <a href="#">{{ $name }}</a>
+                    <a href="{{ url('/') . '/sections/' . $name }}">{{ $name }}</a>
                 </li>
 
             @endforeach
@@ -30,63 +30,80 @@
 
 </div>
 
+@stop
 
-<div id="column-3">
+@section('content')
+
+<div id="products" class="column">
+
+    <div class="top">
+
+        <div class="form">
+
+            {!! Form::open([ 'url' => 'products/create' ]) !!}
+
+                <fieldset>
+
+                    {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+
+                    <select name="section_id" required>
+
+                        <option value="" disabled selected>
+                            Choose...
+                        </option>
+
+                        @foreach ( $sections as $id => $name )
+
+                            <option value="{{ $id }}">{{ $name }}</option>
+
+                        @endforeach
+
+                    </select>
+
+                </fieldset>
+
+                <button type="submit">
+                    Add
+                </button>
+
+            {!! Form::close() !!}
+
+        </div>
+    </div>
 
     <div class="list">
 
-        <div class="top">
+        @foreach ( $products as $letter => $products )
 
-            <div class="form">
+            <ul class="group">
 
-                {!! Form::open([ 'url' => 'products/create' ]) !!}
+                <li>
 
-                    <fieldset>
+                    <h2>{{ $letter }}</h2>
 
-                        {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+                    <ul class="products">
 
-                        <select name="section_id" required>
+                        @foreach ( $products as $product )
 
-                            <option value="" disabled selected>
-                                Choose...
-                            </option>
+                            <li data-pid="{{ $product->id }}" class="product">
+                                <div class="remove"></div>
+                                <span class="name">
+                                    {{ $product->name }}
+                                </span>
+                                {{-- <span class="section">
+                                    ({{ $sections[$product->section_id] }})
+                                </span> --}}
+                            </li>
 
-                            @foreach ( $sections as $id => $name )
+                        @endforeach
 
-                                <option value="{{ $id }}">{{ $name }}</option>
+                    </ul>
 
-                            @endforeach
-
-                        </select>
-
-                    </fieldset>
-
-                    <button type="submit"></button>
-
-                {!! Form::close() !!}
-
-            </div>
-        </div>
-
-        <ul>
-
-            @foreach ( $products as $product )
-
-                <li data-pid="{{ $product->id }}">
-                    <div>
-                        <span class="name">
-                            {{ $product->name }}
-                        </span>
-                        <span class="section">
-                            ({{ $sections[$product->section_id] }})
-                        </span>
-                        <div class="remove"></div>
-                    </div>
                 </li>
 
-            @endforeach
+            </ul>
 
-        </ul>
+        @endforeach
 
     </div>
 </div>
