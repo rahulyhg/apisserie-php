@@ -16,14 +16,14 @@
 
       <?php foreach ( $products as $section_id => $products ) : ?>
 
-        <section data-sid="{{ $section_id }}">
+        <div data-sid="{{ $section_id }}" class="section">
           <h1>{{ $sections->where( 'id', $section_id, false )->first()->name }}</h1>
 
           <ul>
 
             <?php foreach ( $products as $product ) : ?>
 
-              <li data-pid="{{ $product->id }}">
+              <li data-pid="{{ $product->id }}" class="product">
                   <span>
                     [ ] {{ $product->name }}
                   </span>
@@ -32,14 +32,14 @@
             <?php endforeach ?>
 
           </ul>
-        </section>
+        </div>
 
       <?php endforeach ?>
 
     </div>
 
     <script src="{{ url('/') }}/js/jquery.2.1.1.min.js"></script>
-    <script src="{{ url('/') }}/js/scripts.min.js"></script>
+    <script src="{{ url('/') }}/js/print.js"></script>
 
   </body>
 </html>

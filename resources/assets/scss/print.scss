@@ -3,8 +3,9 @@ body
   font-family: Helvetica, Arial, sans-serif;
 }
 
-section
+.section
 {
+  display: none;
   width: 48%;
   float: left;
   margin-left: 2%;
@@ -17,6 +18,11 @@ section
     color: #CCC;
     font-size: 90%;
   }
+
+  &.selected
+  {
+    display: block;
+  }
 }
 
 ul
@@ -25,6 +31,7 @@ ul
 
   li
   {
+    display: none;
     position: relative;
     margin-top: 3pt;
 
@@ -45,6 +52,11 @@ ul
     span
     {
       font-size: 12pt;
+    }
+
+    &.selected
+    {
+      display: block;
     }
   }
 }

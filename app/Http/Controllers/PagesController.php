@@ -11,8 +11,8 @@ class PagesController extends Controller
 
   public function toPrint ()
   {
-    $products = Product::all();
-    $sections = Section::all();
+    $products = Product::all()->sortBy('name');
+    $sections = Section::all()->sortBy('order');
 
     $grouped_products = [];
 
