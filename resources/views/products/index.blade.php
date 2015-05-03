@@ -34,77 +34,104 @@
 
 @section('content')
 
-<div id="products" class="column">
+<?php
 
-    <div class="top">
+$notify = '';
 
-        <div class="form">
+if ( Session::get('notification') || $errors->any() )
+{
+    $notify = 'ui-notify';
+}
 
-            {!! Form::open([ 'url' => 'products/create' ]) !!}
 
-                <fieldset>
+?>
 
-                    {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+<div id="products" class="column {{ $notify }}">
 
-                    <select name="section_id" required>
+    @if ( $errors->any() )
 
-                        <option value="" disabled selected>
-                            Choose...
-                        </option>
+        <div class="ui-notification error">{{ $errors->first() }}</div>
 
-                        @foreach ( $sections as $id => $name )
+    @endif
 
-                            <option value="{{ $id }}">{{ $name }}</option>
+    @if ( Session::get( 'notification' ) )
 
-                        @endforeach
+        <div class="ui-notification success">{{ Session::get('notification') }}</div>
 
-                    </select>
+    @endif
 
-                </fieldset>
+    <div class="inner">
 
-                <button type="submit">
-                    Add
-                </button>
+        <div class="top">
 
-            {!! Form::close() !!}
+            <div class="form">
+
+                {!! Form::open([ 'url' => 'products/create', 'id' => 'addProductForm' ]) !!}
+
+                    <fieldset>
+
+                        {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+
+                        <select name="section_id" required>
+
+                            <option value="" disabled selected>
+                                Choose...
+                            </option>
+
+                            @foreach ( $sections as $id => $name )
+
+                                <option value="{{ $id }}">{{ $name }}</option>
+
+                            @endforeach
+
+                        </select>
+
+                    </fieldset>
+
+                    <button type="submit">
+                        Add
+                    </button>
+
+                {!! Form::close() !!}
+
+            </div>
+        </div>
+
+        <div class="list">
+
+            @foreach ( $products as $letter => $products )
+
+                <ul class="group">
+
+                    <li>
+
+                        <h2>{{ $letter }}</h2>
+
+                        <ul class="products">
+
+                            @foreach ( $products as $product )
+
+                                <li data-pid="{{ $product->id }}" class="product">
+                                    <div class="remove"></div>
+                                    <span class="name">
+                                        {{ $product->name }}
+                                    </span>
+                                    {{-- <span class="section">
+                                        ({{ $sections[$product->section_id] }})
+                                    </span> --}}
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+            @endforeach
 
         </div>
-    </div>
-
-    <div class="list">
-
-        @foreach ( $products as $letter => $products )
-
-            <ul class="group">
-
-                <li>
-
-                    <h2>{{ $letter }}</h2>
-
-                    <ul class="products">
-
-                        @foreach ( $products as $product )
-
-                            <li data-pid="{{ $product->id }}" class="product">
-                                <div class="remove"></div>
-                                <span class="name">
-                                    {{ $product->name }}
-                                </span>
-                                {{-- <span class="section">
-                                    ({{ $sections[$product->section_id] }})
-                                </span> --}}
-                            </li>
-
-                        @endforeach
-
-                    </ul>
-
-                </li>
-
-            </ul>
-
-        @endforeach
-
     </div>
 
 

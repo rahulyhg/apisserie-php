@@ -23,17 +23,13 @@ $(function()
         }
     }
 
-
-
     // register print iframe
     window.printFrame = new PrintFrame();
 
-    $('#sidebar .print a').on('click',function(e)
-    {
-        e.preventDefault();
 
-        window.printFrame.print();
-    })
+
+
+
 
     /* Shopping Bag
     ------------------------------------------ */
@@ -126,16 +122,21 @@ $(function()
     }
 
 
+/* -------- */
 
+    $('[data-pid]').each( function()
+    {
+        var p   = $(this);
+        var pid = parseInt(p.attr('data-pid'));
 
-$('[data-pid]').each( function()
-{
-    var p   = $(this);
-    var pid = parseInt(p.attr('data-pid'));
+        // register product in global product list
+        window.PRODUCTS[pid] = new Product( $(this) );
+    })
 
-    // register product in global product list
-    window.PRODUCTS[pid] = new Product( $(this) );
-})
+    if ( $('.ui-notification').length )
+    {
+        $('#addProductForm [name=name]').focus();
+    }
 
 
 
@@ -198,6 +199,13 @@ $('[data-pid]').each( function()
     ------------------------------------------ */
 
     $('#sidebar header .clear-all').on( 'click', window.BAG.clearAll );
+
+    $('#sidebar .print a').on('click',function(e)
+    {
+        e.preventDefault();
+
+        window.printFrame.print();
+    })
 
 
 

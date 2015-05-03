@@ -14,18 +14,6 @@
 
         <div id="main-wrap">
 
-            @if ( $errors->any() )
-
-                <div class="ui-notification error">{{ $errors[0] }}</div>
-
-            @endif
-
-            @if ( Session::get( 'notification' ) )
-
-                <div class="ui-notification success">{{ Session::get('notification') }}</div>
-
-            @endif
-
             <div id="sidebar" class="column">
 
                 <header>
