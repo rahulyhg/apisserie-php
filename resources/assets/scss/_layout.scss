@@ -6,6 +6,7 @@
     background: #191919;
     color: white;
     z-index: 5000;
+    -webkit-transform: translateZ(0);
 }
 
 #sections
@@ -16,58 +17,6 @@
     width: 250px;
     height: 100vh;
     background: lighten( $theme-color, 40% );
-/*
-    nav
-    {
-        .title
-        {
-            display: flex;
-            height: $top-row-height;
-            background: lighten( $theme-color, 45% );
-        }
-
-        h1
-        {
-            margin: auto;
-            text-align: center;
-            font-size: 2em;
-            color: lighten( $theme-color, 20% );
-            font-family: $cursive;
-        }
-
-        li
-        {
-            margin-bottom: 3px solid white;
-
-            a
-            {
-                display: block;
-                padding: 0.5em;
-                color: darken( desaturate( $theme-color, 30% ), 30% );
-                text-decoration: none;
-
-                &:hover
-                {
-                    background: lighten( $theme-color, 35% );
-                }
-            }
-
-            &.active
-            {
-                a
-                {
-                    background: $theme-color;
-                    color: white;
-                }
-            }
-
-            &:nth-child(even)
-            {
-
-            }
-        }
-    }
-*/
 }
 
 #products
@@ -91,18 +40,14 @@
     .form
     {
         margin: auto 0;
-        padding-left: 1em;
+        padding: 0 1em;
         width: 100%;
 
-        fieldset
+        input,
+        select,
+        button
         {
-            position: relative;
             float: left;
-            width: calc( 100% - 125px );
-            margin: 0;
-            padding: 0;
-            border: 0;
-            vertical-align: middle;
         }
 
         input,
@@ -114,24 +59,30 @@
         input[type=text]
         {
             padding: 0.675em;
-            width: 100%;
+            width: #{'calc(100% - 160px - 120px)'};
             border: 1px solid #BBB;
             border-right: 0;
+            outline: none;
+
+            &:focus
+            {
+                box-shadow: 0 0 5px 2px $theme-color;
+            }
         }
 
         select
         {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 0.5em;
+            width: 160px;
+            padding: 0.675em;
+            border-radius: 0;
+            -webkit-appearance: none;
         }
 
         button
         {
             float: left;
-            width: 112px;
-            height: 41px;
+            width: 120px;
+            height: 42px;
             border: none;
             border-radius: 0 10px 10px 0;
             cursor: pointer;

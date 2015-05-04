@@ -1,37 +1,5 @@
 @extends('master')
 
-@section('disabled')
-
-<div id="sections" class="column">
-
-    <nav>
-
-        <div class="title">
-            <h1>Sections</h1>
-        </div>
-
-        <ul>
-
-            <li class="active">
-                <a href="#">All</a>
-            </li>
-
-            @foreach ( $sections as $id => $name )
-
-                <li>
-                    <a href="{{ url('/') . '/sections/' . $name }}">{{ $name }}</a>
-                </li>
-
-            @endforeach
-
-        </ul>
-
-    </nav>
-
-</div>
-
-@stop
-
 @section('content')
 
 <?php
@@ -68,25 +36,21 @@ if ( Session::get('notification') || $errors->any() )
 
                 {!! Form::open([ 'url' => 'products/create', 'id' => 'addProductForm' ]) !!}
 
-                    <fieldset>
+                    {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
 
-                        {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+                    <select name="section_id" required>
 
-                        <select name="section_id" required>
+                        <option value="" disabled selected>
+                            Choose...
+                        </option>
 
-                            <option value="" disabled selected>
-                                Choose...
-                            </option>
+                        @foreach ( $sections as $id => $name )
 
-                            @foreach ( $sections as $id => $name )
+                            <option value="{{ $id }}">{{ $name }}</option>
 
-                                <option value="{{ $id }}">{{ $name }}</option>
+                        @endforeach
 
-                            @endforeach
-
-                        </select>
-
-                    </fieldset>
+                    </select>
 
                     <button type="submit">
                         Add
