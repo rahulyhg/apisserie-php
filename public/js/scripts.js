@@ -142,58 +142,6 @@ $(function()
 
 
 
-    /* Sections
-    ------------------------------------------ */
-/*
-    var Section = function ( container )
-    {
-        var $this = this;
-
-        // shortcuts
-        this.container = container;
-        this.toggle    = this.container.find('.toggle');
-
-        // product list
-        this.products  = [];
-
-
-        this.construct = function ()
-        {
-            $this.container.find('.product').each( $this.registerProduct );
-            $this.toggle.on( 'click', $this.toggleList );
-        }
-
-        // show/hide section content
-        this.toggleList = function ()
-        {
-            $this.container.toggleClass('hide');
-        }
-
-        // add products to the global list
-        this.registerProduct = function ( index, element )
-        {
-            var p   = $(element);
-            var pid = parseInt(p.attr('data-pid'));
-
-            // register product in global product list
-            window.PRODUCTS[pid] = new Product( $(element) );
-
-            // register pid in the section object
-            $this.products.push(pid);
-        }
-
-        this.construct();
-    }
-
-
-    window.Sections = [];
-
-    $('.section').each( function( i, item )
-    {
-        window.Sections.push( new Section($(item)) );
-    })
-*/
-
 
     /* Header
     ------------------------------------------ */
