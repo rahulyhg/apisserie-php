@@ -227,6 +227,13 @@ $(function()
             {
                 if ( localStorage[pid] === 'true' )
                 {
+                    // prevent crash if a deleted product is still in the bag
+                    if ( !( pid in window.PRODUCTS ) )
+                    {
+                        trash.push(pid);
+                        continue;
+                    }
+
                     // pre-select item
                     window.PRODUCTS[pid].take();
                 }
