@@ -21,7 +21,7 @@ class ProductsController extends Controller
         $groupedProducts = [];
         foreach ( $products as $product )
         {
-            $letter = substr( $product->name, 0, 1 );
+            $letter = strtoupper(substr( $product->name, 0, 1 ));
             if ( !isset($groupedProducts[$letter]) )
             {
                 $groupedProducts[$letter] = [];
