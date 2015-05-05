@@ -17,6 +17,11 @@
     }
 }
 
+.products
+{
+    border-top: 1px solid lighten(desaturate($theme-color,30%),20%);
+}
+
 .product
 {
     display: flex;
