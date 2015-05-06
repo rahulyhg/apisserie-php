@@ -1,13 +1,17 @@
 module.exports = function(grunt)
 {
 
-  var cssPath  = 'public/css/',
-      scssPath = 'resources/assets/scss/';
+  var path =
+  {
+    css  : 'public/css/',
+    scss : 'resources/assets/scss/',
+    js   :
+    {
+      Src : 'resources/assets/scss/',
+      min : 'public/css/'
+    }
+  }
 
-  var scssFiles = {};
-
-  scssFiles[cssPath + 'style.css'] = scssPath + 'style.scss';
-  scssFiles[cssPath + 'print.css'] = scssPath + 'print.scss';
 
   grunt.initConfig(
   {
@@ -20,30 +24,33 @@ module.exports = function(grunt)
         {
           style: 'compressed'
         },
-        files : scssFiles
+
+        files :
+        {
+          'public/css/style.css' : 'resources/assets/scss/style.scss',
+          'public/css/print.css' : 'resources/assets/scss/print.scss'
+        }
       }
     },
 
-    autoprefixer :
+    uglify :
     {
-      options :
+      my_target :
       {
-        browsers : [ 'last 1 version', '> 5%' ],
-        remove   : false
-      },
-
-      single_file :
-      {
-        src : 'public/css/style.css',
-        src : 'public/css/login.css'
+        files :
+        {
+          'public/js/scripts.min.js' : [ 'resources/assets/js/scripts.js' ],
+          'public/js/print.min.js'   : [ 'resources/assets/js/print.js' ]
+        }
       }
     }
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   //grunt.loadNpmTasks('grunt-autoprefixer');
 
-  grunt.registerTask( 'default', [ 'sass' ] );
+  grunt.registerTask( 'default', [ 'sass', 'uglify' ] );
 
 }
