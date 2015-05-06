@@ -1,54 +1,54 @@
 #products.ui-notify
 {
-  .inner
-  {
-    -webkit-animation: bodySlide 3s ease-out;
-    -webkit-animation-fill-mode: both;
-  }
+    .inner
+    {
+        -webkit-animation: bodySlide 3s ease-out;
+        -webkit-animation-fill-mode: both;
+    }
 
-  .ui-notification
-  {
-    -webkit-animation: notificationSlide 3s ease-out;
-    -webkit-animation-fill-mode: both;
-  }
+    .ui-notification
+    {
+        -webkit-animation: notificationSlide 3s ease-out;
+        -webkit-animation-fill-mode: both;
+    }
 }
 
 .ui-notification
 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.5em 0.7em;
-  box-shadow: 0 0 2px #CCC;
-  color: white;
-  font-size: 0.9em;
-  font-weight: bold;
-  z-index: 10000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5em 0.7em;
+    box-shadow: 0 0 2px #CCC;
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    z-index: 10000;
 
-  &.success
-  {
-    background-color: hsl(93, 60%, 40%);
-  }
+    &.success
+    {
+        background-color: hsl(93, 60%, 40%);
+    }
 
-  &.error
-  {
-    background-color: hsl(36, 82%, 52%);
-  }
+    &.error
+    {
+        background-color: hsl(36, 82%, 52%);
+    }
 }
 
 @-webkit-keyframes notificationSlide
 {
-  0%   { transform: translateY(-100%) }
-  20%  { transform: translateY(0)     }
-  80%  { transform: translateY(0)     }
-  100% { transform: translateY(-100%) }
+    0%   { transform: translateY(-100%) }
+    20%  { transform: translateY(0)     }
+    80%  { transform: translateY(0)     }
+    100% { transform: translateY(-100%) }
 }
 
 @-webkit-keyframes bodySlide
 {
-  0%   { transform: translateY(0)    }
-  20%  { transform: translateY(10px) }
-  80%  { transform: translateY(10px) }
-  100% { transform: translateY(0)    }
+    0%   { transform: translateY(0)    }
+    20%  { transform: translateY(10px) }
+    80%  { transform: translateY(10px) }
+    100% { transform: translateY(0)    }
 }

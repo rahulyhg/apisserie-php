@@ -4,22 +4,23 @@ use App\Section;
 use Redirect;
 use Request;
 
-class SectionsController extends Controller {
+class SectionsController extends Controller
+{
 
-  public function index ()
-  {
-    $sections = Section::all()->sortBy('name');
+    public function index ()
+    {
+        $sections = Section::all()->sortBy('name');
 
-    return view('sections.index', compact('sections'));
-  }
+        return view('sections.index', compact('sections'));
+    }
 
-  public function store ()
-  {
-    $input = Request::all();
+    public function store ()
+    {
+        $input = Request::all();
 
-    Section::create($input);
+        Section::create($input);
 
-    return Redirect::to('sections');
-  }
+        return Redirect::to('sections');
+    }
 
 }

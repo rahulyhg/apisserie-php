@@ -9,20 +9,20 @@ use DB;
 class PagesController extends Controller
 {
 
-  public function toPrint ()
-  {
-    $products = Product::all()->sortBy('name');
-    $sections = Section::all()->sortBy('order');
-
-    $grouped_products = [];
-
-    foreach ( $sections as $section )
+    public function toPrint ()
     {
-      $grouped_products[$section->id] = $products->where( 'section_id', $section->id );
-    }
+        $products = Product::all()->sortBy('name');
+        $sections = Section::all()->sortBy('order');
 
-    return view('print')->with( 'products', $grouped_products )
-                        ->with( 'sections', $sections );
-  }
+        $grouped_products = [];
+
+        foreach ( $sections as $section )
+        {
+            $grouped_products[$section->id] = $products->where( 'section_id', $section->id );
+        }
+
+        return view('print')->with( 'products', $grouped_products )
+                            ->with( 'sections', $sections );
+    }
 
 }
