@@ -39,7 +39,7 @@
     </div>
 
     <script src="{{ url('/') }}/js/jquery.2.1.1.min.js"></script>
-    <script src="{{ url('/') }}/js/print.js"></script>
+    <script src="{{ url('/') }}/js/print.min.js"></script>
 
   </body>
 </html>
