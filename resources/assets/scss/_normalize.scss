@@ -1,0 +1,72 @@
+body
+{
+    margin: 0;
+    font-family: $serif;
+    font-size: 16px;
+}
+
+ul, ol
+{
+    padding: 0;
+    margin: 0;
+}
+
+*
+{
+    box-sizing: border-box
+}
+
+input,
+{
+    margin: 0;
+}
+
+select
+{
+    -webkit-appearance: none;
+}
+
+input[type=text],
+input[type=email],
+select
+{
+    padding: 0.675em 10px;
+    border: 1px solid #CCC;
+    //box-shadow: none;
+    transition: box-shadow 100ms ease-out;
+}
+
+input[type=text],
+input[type=email],
+select,
+.btn
+{
+    border-radius: 4px;
+    font-size: 1em;
+
+    &:focus
+    {
+        outline: none;
+        border-color: darken($theme-color,5%);
+        box-shadow: 0 0 4px 2px lighten($theme-color,20%);
+    }
+}
+
+.btn
+{
+    padding: 0.675em 10px 0.7em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: $theme-color;
+    vertical-align: top;
+    color: white;
+    font-weight: bold;
+
+    &:hover
+    {
+        background: darken($theme-color,10%);
+    }
+}
+
+

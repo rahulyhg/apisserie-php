@@ -1,33 +1,7 @@
-
-$theme-color: hsl( random(359), 50%, 50% );
-
-$top-row-height: 120px;
-
-$serif:   'Lato', Helvetica, sans-serif;
-$cursive: 'Boogaloo', cursive;
-
-
-body
-{
-    margin: 0;
-    font-family: $serif;
-    font-size: 16px;
-}
-
-ul, ol
-{
-    padding: 0;
-    margin: 0;
-}
+@import 'variables';
+@import 'normalize';
 
 .float-wrap
 {
     overflow: hidden;
-}
-
-* { box-sizing: border-box }
-
-input
-{
-  margin: 0;
 }

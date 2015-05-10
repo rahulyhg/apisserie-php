@@ -50,7 +50,7 @@
         display: flex;
         position: relative;
         height: $top-row-height;
-        background: white;
+        background: #f9f9f9;
     }
 
     .form
@@ -69,9 +69,7 @@
         input[type=text]
         {
             width: 67.5%;
-            padding: 0.675em 10px;
             margin-right: 1.25%;
-            border-radius: 5px 5px;
         }
 
         select
@@ -79,22 +77,14 @@
             width: 20%;
             margin-right: 1.25%;
             padding: 0.675em 10px;
-            border-radius: 5px;
-            -webkit-appearance: none;
+            background: white;
+
         }
 
         input,
         select
         {
             font-size: 1em;
-            border: 1px solid #BBB;
-
-            &:focus
-            {
-                outline: none;
-                border-color: white;
-                box-shadow: 0 0 5px 2px lighten($theme-color,20%);
-            }
         }
 
         button
@@ -102,19 +92,6 @@
             float: left;
             width: 10%;
             height: 42px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background: $theme-color;
-            vertical-align: middle;
-            color: white;
-            font-weight: bold;
-            font-size: 1em;
-
-            &:hover
-            {
-                background: darken($theme-color,10%);
-            }
         }
     }
 }
