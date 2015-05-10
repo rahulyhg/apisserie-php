@@ -10,15 +10,35 @@ class ProductsController extends Controller
 
     public function index ()
     {
+        $products = $this->getGroupedProducts();
+        $sections = $this->getIndexedSections();
+
+        return view('products.index')
+                ->with( 'products', $products )
+                ->with( 'sections', $sections );
+    }
+
+    public function edit ()
+    {
         $products = Product::all()->sortBy('name');
-        $sections = Section::all()->sortBy('order');
+        $sections = $this->getIndexedSections();
 
-        foreach ( $sections as $section )
-        {
-            $indexedSections[$section->id] = $section->name;
-        }
+        return view('products.edit')
+                ->with( 'products', $products )
+                ->with( 'sections', $sections );
+    }
 
-        $groupedProducts = [];
+    public function store ( CreateProductRequest $request )
+    {
+        $product = Product::create($request->all());
+
+        return redirect('products')->with( 'notification', 'Product added : ' . $product->name );
+    }
+
+    private function getGroupedProducts ()
+    {
+        $products = Product::all()->sortBy('name');
+
         foreach ( $products as $product )
         {
             $letter = strtoupper(substr( $product->name, 0, 1 ));
@@ -30,16 +50,19 @@ class ProductsController extends Controller
             $groupedProducts[$letter][] = $product;
         }
 
-        return view('products.index')
-                ->with( 'products', $groupedProducts )
-                ->with( 'sections', $indexedSections );
+        return $groupedProducts;
     }
 
-    public function store ( CreateProductRequest $request )
+    private function getIndexedSections ()
     {
-        $product = Product::create($request->all());
+        $sections = Section::all()->sortBy('order');
 
-        return redirect('products')->with( 'notification', 'Product added : ' . $product->name );
+        foreach ( $sections as $section )
+        {
+            $indexedSections[$section->id] = $section->name;
+        }
+
+        return $indexedSections;
     }
 
 }

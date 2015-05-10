@@ -20,6 +20,7 @@ Route::get( '/', function()
 Route::group(['prefix' => 'products'], function()
 {
   Route::get(  '/',      'ProductsController@index' );
+  Route::get(  'edit',   'ProductsController@edit' );
   Route::post( 'create', 'ProductsController@store' );
 });
 
