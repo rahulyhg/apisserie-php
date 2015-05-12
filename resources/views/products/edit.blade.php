@@ -1,82 +1,85 @@
 @extends('master')
 
+
+
+@section('menu')
+
+    <ul>
+        <li>
+            <a href="/products">List</a>
+        </li>
+    </ul>
+
+@stop
+
+
+
 @section('content')
 
-<?php
+    <main class="products-edit">
 
-$notify = '';
+        <div id="products" class="column {{ Session::get('notification') || $errors->any() ? 'ui-notify' : '' }}">
 
-if ( Session::get('notification') || $errors->any() )
-{
-    $notify = 'ui-notify';
-}
+            @if ( $errors->any() )
 
+                <div class="ui-notification error">{{ $errors->first() }}</div>
 
-?>
+            @endif
 
+            @if ( Session::get( 'notification' ) )
 
-<main class="products-edit">
+                <div class="ui-notification success">{{ Session::get('notification') }}</div>
 
-    <div id="products" class="column {{ $notify }}">
+            @endif
 
-        @if ( $errors->any() )
+            <div class="inner">
 
-            <div class="ui-notification error">{{ $errors->first() }}</div>
+                <div class="top"></div>
 
-        @endif
+                <div class="list">
 
-        @if ( Session::get( 'notification' ) )
+                    @foreach ( $products as $product )
 
-            <div class="ui-notification success">{{ Session::get('notification') }}</div>
+                        <li data-pid="{{ $product->id }}" class="product">
 
-        @endif
+                            {!! Form::open([ 'url' => 'products/update', 'id' => 'updateProductForm' ]) !!}
 
-        <div class="inner">
+                                {!! Form::text( 'name', $product->name, [ 'class' => 'name' ] ) !!}
 
-            <div class="top"></div>
+                                <select name="section_id" required>
 
-            <div class="list">
+                                    <option value="" disabled selected>
+                                        Choose...
+                                    </option>
 
-                @foreach ( $products as $product )
+                                    @foreach ( $sections as $id => $name )
 
-                    <li data-pid="{{ $product->id }}" class="product">
+                                        <option value="{{ $id }}" {{ $id == $product->section_id ? 'selected' : '' }}>
+                                            {{ $name }}
+                                        </option>
 
-                        {!! Form::text( 'name', $product->name, [ 'class' => 'name' ] ) !!}
+                                    @endforeach
 
-                        <select name="section_id" required>
+                                </select>
 
-                            <option value="" disabled selected>
-                                Choose...
-                            </option>
+                                <button type="submit" class="btn">
+                                    Save
+                                </button>
 
-                            @foreach ( $sections as $id => $name )
+                            {!! Form::close() !!}
 
-                                <option value="{{ $id }}" {{ $id == $product->section_id ? 'selected' : '' }}>
-                                    {{ $name }}
-                                </option>
+                        </li>
 
-                            @endforeach
+                    @endforeach
 
-                        </select>
-
-                        <button type="submit" class="btn">
-                            Save
-                        </button>
-                        {{-- <span class="section">
-                            ({{ $sections[$product->section_id] }})
-                        </span> --}}
-                    </li>
-
-                @endforeach
-
+                </div>
             </div>
+
+
+            <iframe src="{{ url('/print') }}" frameborder="0" id="print-frame"></iframe>
+
         </div>
 
-
-        <iframe src="{{ url('/print') }}" frameborder="0" id="print-frame"></iframe>
-
-    </div>
-
-</main>
+    </main>
 
 @stop

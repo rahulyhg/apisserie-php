@@ -22,14 +22,7 @@
                         <h1>Apisserie</h1>
                     </div>
 
-                    <ul>
-                        <li class="print">
-                            <a href="/print">Print</a>
-                        </li>
-                        <li class="clear-all">
-                            <a href="#">Clear items</a>
-                        </li>
-                    </ul>
+                    @yield('menu')
 
                 </header>
 

@@ -1,116 +1,126 @@
 @extends('master')
 
+
+
 @section('scripts')
 
-<script src="{{ url('/') }}/js/scripts.min.js"></script>
+    <script src="{{ url('/') }}/js/scripts.min.js"></script>
 
 @stop
 
+
+
+@section('menu')
+
+    <ul>
+        <li class="print">
+            <a href="/print">Print</a>
+        </li>
+        <li class="clear-all">
+            <a href="#">Clear items</a>
+        </li>
+        <li>
+            <a href="/products/edit">Edit</a>
+        </li>
+    </ul>
+
+@stop
+
+
+
 @section('content')
 
-<?php
+    <main class="products-index">
 
-$notify = '';
+        <div id="products" class="column {{ Session::get('notification') || $errors->any() ? 'ui-notify' : '' }}">
 
-if ( Session::get('notification') || $errors->any() )
-{
-    $notify = 'ui-notify';
-}
+            @if ( $errors->any() )
 
+                <div class="ui-notification error">{{ $errors->first() }}</div>
 
-?>
+            @endif
 
-<main class="products-index">
+            @if ( Session::get( 'notification' ) )
 
-    <div id="products" class="column {{ $notify }}">
+                <div class="ui-notification success">{{ Session::get('notification') }}</div>
 
-        @if ( $errors->any() )
+            @endif
 
-            <div class="ui-notification error">{{ $errors->first() }}</div>
+            <div class="inner">
 
-        @endif
+                <div class="top">
 
-        @if ( Session::get( 'notification' ) )
+                    <div class="form">
 
-            <div class="ui-notification success">{{ Session::get('notification') }}</div>
+                        {!! Form::open([ 'url' => 'products/create', 'id' => 'addProductForm' ]) !!}
 
-        @endif
+                            {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
 
-        <div class="inner">
+                            <select name="section_id" required>
 
-            <div class="top">
+                                <option value="" disabled selected>
+                                    Choose...
+                                </option>
 
-                <div class="form">
+                                @foreach ( $sections as $id => $name )
 
-                    {!! Form::open([ 'url' => 'products/create', 'id' => 'addProductForm' ]) !!}
+                                    <option value="{{ $id }}">{{ $name }}</option>
 
-                        {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+                                @endforeach
 
-                        <select name="section_id" required>
+                            </select>
 
-                            <option value="" disabled selected>
-                                Choose...
-                            </option>
+                            <button type="submit" class="btn">
+                                Add
+                            </button>
 
-                            @foreach ( $sections as $id => $name )
+                        {!! Form::close() !!}
 
-                                <option value="{{ $id }}">{{ $name }}</option>
+                    </div>
+                </div>
 
-                            @endforeach
+                <div class="list">
 
-                        </select>
+                    @foreach ( $products as $letter => $products )
 
-                        <button type="submit" class="btn">
-                            Add
-                        </button>
+                        <ul class="group">
 
-                    {!! Form::close() !!}
+                            <li>
+
+                                <h2>{{ $letter }}</h2>
+
+                                <ul class="products">
+
+                                    @foreach ( $products as $product )
+
+                                        <li data-pid="{{ $product->id }}" class="product">
+                                            <div class="remove"></div>
+                                            <span class="name">
+                                                {{ $product->name }}
+                                            </span>
+                                            {{-- <span class="section">
+                                                ({{ $sections[$product->section_id] }})
+                                            </span> --}}
+                                        </li>
+
+                                    @endforeach
+
+                                </ul>
+
+                            </li>
+
+                        </ul>
+
+                    @endforeach
 
                 </div>
             </div>
 
-            <div class="list">
 
-                @foreach ( $products as $letter => $products )
+            <iframe src="{{ url('/print') }}" frameborder="0" id="print-frame"></iframe>
 
-                    <ul class="group">
-
-                        <li>
-
-                            <h2>{{ $letter }}</h2>
-
-                            <ul class="products">
-
-                                @foreach ( $products as $product )
-
-                                    <li data-pid="{{ $product->id }}" class="product">
-                                        <div class="remove"></div>
-                                        <span class="name">
-                                            {{ $product->name }}
-                                        </span>
-                                        {{-- <span class="section">
-                                            ({{ $sections[$product->section_id] }})
-                                        </span> --}}
-                                    </li>
-
-                                @endforeach
-
-                            </ul>
-
-                        </li>
-
-                    </ul>
-
-                @endforeach
-
-            </div>
         </div>
 
-
-        <iframe src="{{ url('/print') }}" frameborder="0" id="print-frame"></iframe>
-
-    </div>
-
-</main>
+    </main>
 
 @stop
