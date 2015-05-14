@@ -39,5 +39,13 @@
         {
             width: 100px;
         }
+
+        &.invalid
+        {
+            input
+            {
+                border-color: #c00;
+            }
+        }
     }
 }

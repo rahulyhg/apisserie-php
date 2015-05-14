@@ -21,7 +21,9 @@ Route::group(['prefix' => 'products'], function()
 {
   Route::get(  '/',      'ProductsController@index' );
   Route::get(  'edit',   'ProductsController@edit' );
+
   Route::post( 'create', 'ProductsController@store' );
+  Route::post( 'update', 'ProductsController@update' );
 });
 
 Route::group(['prefix' => 'sections'], function()

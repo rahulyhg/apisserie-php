@@ -40,11 +40,13 @@
 
                     @foreach ( $products as $product )
 
-                        <li data-pid="{{ $product->id }}" class="product">
+                        <li data-pid="{{ $product->id }}" class="product {{ Session::get('productId') === $product->id ? 'invalid' : '' }}">
 
                             {!! Form::open([ 'url' => 'products/update', 'id' => 'updateProductForm' ]) !!}
 
-                                {!! Form::text( 'name', $product->name, [ 'class' => 'name' ] ) !!}
+                                {!! Form::hidden( 'id', $product->id ) !!}
+
+                                {!! Form::text( 'name', Session::get('productId') === $product->id ? Session::get('productName') : $product->name, [ 'class' => 'name', 'required' ] ) !!}
 
                                 <select name="section_id" required>
 
