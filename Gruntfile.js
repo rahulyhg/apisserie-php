@@ -39,7 +39,11 @@ module.exports = function(grunt)
             {
                 files :
                 {
-                    'public/js/scripts.min.js' : [ 'resources/assets/js/scripts.js' ],
+                    'public/js/scripts.min.js' :
+                    [
+                        'resources/assets/js/classes/*.js',
+                        'resources/assets/js/scripts.js'
+                    ],
                     'public/js/print.min.js'   : [ 'resources/assets/js/print.js' ]
                 }
             }
