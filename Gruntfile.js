@@ -37,6 +37,12 @@ module.exports = function(grunt)
         {
             my_target :
             {
+                options :
+                {
+                    sourceMap : true,
+                    sourceMapIncludeSources : true,
+                },
+
                 files :
                 {
                     'public/js/scripts.min.js' :
@@ -44,7 +50,7 @@ module.exports = function(grunt)
                         'resources/assets/js/classes/*.js',
                         'resources/assets/js/scripts.js'
                     ],
-                    'public/js/print.min.js'   : [ 'resources/assets/js/print.js' ]
+                    'public/js/print.min.js' : [ 'resources/assets/js/print.js' ]
                 }
             }
         }
