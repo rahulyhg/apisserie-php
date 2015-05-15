@@ -48,10 +48,10 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => 'us-cdbr-iron-east-02.cleardb.net',
-			'database'  => 'heroku_41b44994073bd02',
-			'username'  => 'bad9d048dd6697',
-			'password'  => 'b0fd2b2b',
+			'host'      => env('DB_HOST'),
+			'database'  => env('DB_DATABASE'),
+			'username'  => env('DB_USERNAME'),
+			'password'  => env('DB_PASSWORD'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
@@ -59,6 +59,9 @@ return [
 		]
 
 	],
+
+
+
 
 	/*
 	|--------------------------------------------------------------------------
