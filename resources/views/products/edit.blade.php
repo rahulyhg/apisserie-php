@@ -13,6 +13,12 @@
 @stop
 
 
+@section('scripts')
+
+    <script src="{{ url('/') }}/js/edit.min.js"></script>
+
+@stop
+
 
 @section('content')
 
@@ -42,7 +48,7 @@
 
                         <li data-pid="{{ $product->id }}" class="product {{ Session::get('productId') === $product->id ? 'invalid' : '' }}">
 
-                            {!! Form::open([ 'url' => 'products/update', 'id' => 'updateProductForm' ]) !!}
+                            {!! Form::open([ 'url' => 'products/update', 'class' => 'UpdateProductForm' ]) !!}
 
                                 {!! Form::hidden( 'id', $product->id ) !!}
 
@@ -66,6 +72,15 @@
 
                                 <button type="submit" class="btn">
                                     Save
+                                </button>
+
+                            {!! Form::close() !!}
+
+                            {!! Form::open([ 'url' => 'products/delete/' . $product->id, 'method' => 'DELETE', 'class' => 'DeleteProductForm' ]) !!}
+
+                                <button type="submit" class="btn">
+                                    <span class="warning">Sure ?</span>
+                                    <span class="default">Delete</span>
                                 </button>
 
                             {!! Form::close() !!}

@@ -80,6 +80,18 @@ class ProductsController extends Controller
 
 
 
+    public function delete ( $id )
+    {
+        $product = Product::find($id);
+        $name = $product->name;
+
+        $product->delete();
+
+        return redirect('products/edit')->with( 'notification', 'Product deleted : ' . $name );
+    }
+
+
+
     private function getGroupedProducts ()
     {
         $products = Product::all()->sortBy('name');

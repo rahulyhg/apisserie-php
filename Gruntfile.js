@@ -50,6 +50,11 @@ module.exports = function(grunt)
                         'resources/assets/js/classes/*.js',
                         'resources/assets/js/scripts.js'
                     ],
+                    'public/js/edit.min.js' :
+                    [
+                        'resources/assets/js/classes/*.js',
+                        'resources/assets/js/edit.js'
+                    ],
                     'public/js/print.min.js' : [ 'resources/assets/js/print.js' ]
                 }
             }

@@ -4,6 +4,11 @@
     {
         padding: 0.6em 0 0.55em 30px;
 
+        form
+        {
+            display: inline;
+        }
+
         .name,
         select
         {
@@ -38,6 +43,36 @@
         .btn
         {
             width: 100px;
+        }
+
+        .DeleteProductForm
+        {
+            margin-left: 20px;
+
+            .warning
+            {
+                display: none;
+            }
+
+            &.warning
+            {
+                .btn
+                {
+                    background: red;
+                    color: white;
+                    text-transform: uppercase;
+
+                    .warning
+                    {
+                        display: inline;
+                    }
+
+                    .default
+                    {
+                        display: none;
+                    }
+                }
+            }
         }
 
         &.invalid
