@@ -8,7 +8,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Boogaloo' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link href="{{ url('/') }}/css/style.css" rel="stylesheet">
+        <link href="{{ url('/') }}/css/styles.css" rel="stylesheet">
     </head>
     <body>
 

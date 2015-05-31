@@ -14,7 +14,7 @@
         font-weight: bold;
         font-size: 3em;
         text-align: center;
-        color: $theme-color;
+        color: theme-color();
         font-family: $cursive;
         -webkit-font-smoothing: subpixel-antialiased;
     }
@@ -48,7 +48,7 @@
                     width: 0;
                     height: 2px;
                     opacity: 0;
-                    background: $theme-color;
+                    background: theme-color();
                     transition: 100ms ease-out;
                     transition-property: opacity, width;
                 }

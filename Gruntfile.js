@@ -27,7 +27,7 @@ module.exports = function(grunt)
 
                 files :
                 {
-                    'public/css/style.css' : 'resources/assets/scss/style.scss',
+                    'public/css/styles.css' : 'resources/assets/scss/styles.scss',
                     'public/css/print.css' : 'resources/assets/scss/print.scss'
                 }
             }

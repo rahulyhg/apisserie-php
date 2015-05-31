@@ -21,7 +21,7 @@ main.login
             font-weight: bold;
             font-size: 3.6em;
             text-align: center;
-            color: $theme-color;
+            color: theme-color();
             font-family: $cursive;
         }
 
@@ -53,14 +53,14 @@ main.login
             margin-top: 26px;
             border: none;
             cursor: pointer;
-            background: $theme-color;
+            background: theme-color();
             color: #111;
             font-size: 1.4em;
             text-align: center;
 
             &:hover
             {
-                background: lighten($theme-color,5%);
+                background: theme-color(-5%);
             }
         }
     }

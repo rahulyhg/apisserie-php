@@ -1,0 +1,19 @@
+
+@function theme-color ( $lightness : 0, $saturation : 0 )
+{
+    @if ( $saturation == 0 ) { $saturation : 0% }
+    @if ( $lightness == 0 )  { $lightness  : 0% }
+
+    $theme-saturation : saturation($theme-color);
+    $theme-lightness  : lightness($theme-color);
+
+    @if ( $saturation == 0% ) { @if ( $lightness == 0% )
+    {
+        @return $theme-color;
+    }}
+
+    $saturation : $theme-saturation + $saturation;
+    $lightness  : $theme-lightness + $lightness;
+
+    @return hsl( hue($theme-color), $saturation, $lightness );
+}

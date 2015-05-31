@@ -47,8 +47,8 @@ select,
     &:focus
     {
         outline: none;
-        border-color: darken($theme-color,5%);
-        box-shadow: 0 0 4px 2px lighten($theme-color,20%);
+        border-color: theme-color(-5%);
+        box-shadow: 0 0 4px 2px theme-color(20%);
     }
 }
 
@@ -58,14 +58,14 @@ select,
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background: $theme-color;
+    background: theme-color();
     vertical-align: top;
     color: white;
     font-weight: bold;
 
     &:hover
     {
-        background: darken($theme-color,10%);
+        background: theme-color(-10%);
     }
 }
 
