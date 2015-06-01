@@ -6,7 +6,7 @@
 
     <ul>
         <li>
-            <a href="/products">List</a>
+            <a href="{{ url('products') }}">Back</a>
         </li>
     </ul>
 
@@ -93,7 +93,7 @@
             </div>
 
 
-            <iframe src="{{ url('/print') }}" frameborder="0" id="print-frame"></iframe>
+            <iframe src="{{ url('print') }}" frameborder="0" id="print-frame"></iframe>
 
         </div>
 

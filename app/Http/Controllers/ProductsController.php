@@ -38,12 +38,11 @@ class ProductsController extends Controller
      */
     public function sections ( $slug = null )
     {
-        //Book::with('author')->get()
         $sections = Section::all()->sortBy('order');
         $section  = $sections->where( 'slug', $slug )->first();
         $products = $slug ? $section->products()->get() : Product::all();
 
-        $products = $this->getGroupedProducts($products->sortBy('name'));
+        $products = $this->getGroupedProducts($products);
 
         return view('products.sections')
                 ->with( 'products', $products )
@@ -83,7 +82,7 @@ class ProductsController extends Controller
 
 
     /**
-     * CRUD Delete.
+     * CRUD Update.
      *
      * @return View
      */
@@ -146,6 +145,8 @@ class ProductsController extends Controller
      */
     private function getGroupedProducts ( $products )
     {
+        $products->sortBy('name');
+
         foreach ( $products as $product )
         {
             $letter = strtoupper(substr( $product->name, 0, 1 ));
