@@ -20,7 +20,7 @@
             <a href="#">Clear items</a>
         </li>
         <li>
-            <a href="{{ url('products/sections') }}">Show Sections</a>
+            <a href="{{ url('products') }}">Hide Sections</a>
         </li>
         <li>
             <a href="{{ url('products/edit') }}">Edit</a>
@@ -33,7 +33,27 @@
 
 @section('content')
 
-    <main class="products-index">
+    <main class="products-index sections">
+
+        <div id="sections">
+
+            <div class="title">
+                <h2>Sections</h2>
+            </div>
+
+            <ul>
+
+                @foreach ( $sections as $section )
+
+                    <li class="{{ $slug && $section->slug === $slug ? 'selected' : '' }}">
+                        <a href="{{ url('products/sections/' . $section->slug ) }}">{{ $section->name }}</a>
+                    </li>
+
+                @endforeach
+
+            </ul>
+
+        </div>
 
         <div id="products" class="column {{ Session::get('notification') || $errors->any() ? 'ui-notify' : '' }}">
 
@@ -65,9 +85,9 @@
                                     Choose...
                                 </option>
 
-                                @foreach ( $sections as $section )
+                                @foreach ( $sections as $id => $name )
 
-                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                    <option value="{{ $id }}">{{ $name }}</option>
 
                                 @endforeach
 

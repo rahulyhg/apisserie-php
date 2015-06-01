@@ -60,10 +60,10 @@
                                         Choose...
                                     </option>
 
-                                    @foreach ( $sections as $id => $name )
+                                    @foreach ( $sections as $section )
 
-                                        <option value="{{ $id }}" {{ $id == $product->section_id ? 'selected' : '' }}>
-                                            {{ $name }}
+                                        <option value="{{ $section->id }}" {{ $section->id == $product->section_id ? 'selected' : '' }}>
+                                            {{ $section->name }}
                                         </option>
 
                                     @endforeach

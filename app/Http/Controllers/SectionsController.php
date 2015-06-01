@@ -9,7 +9,7 @@ class SectionsController extends Controller
 
     public function index ()
     {
-        $sections = Section::all()->sortBy('name');
+        $sections = Section::all()->sortBy('name')->get();
 
         return view('sections.index', compact('sections'));
     }

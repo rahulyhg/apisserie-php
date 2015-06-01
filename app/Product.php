@@ -10,9 +10,15 @@ class Product extends Model
 
     protected $fillable = ['name','section_id'];
 
-    public function category ()
+
+    public function scopeOfSection ( $query, $id )
     {
-        return $this->belongsTo('Category');
+        return $query->where( 'section_id', '=', $id );
+    }
+
+    public function section ()
+    {
+        return $this->hasOne('App\Section');
     }
 
 }

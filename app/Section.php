@@ -12,7 +12,12 @@ class Section extends Model
 
     public function products ()
     {
-        return $this->hasMany('Article');
+        return $this->hasMany('App\Product');
+    }
+
+    public function scopeWhereSlug ( $query, $slug )
+    {
+        $request->where( 'slug', '=', $slug );
     }
 
 }

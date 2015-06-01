@@ -19,8 +19,10 @@ Route::get( '/', function()
 
 Route::group(['prefix' => 'products'], function()
 {
-  Route::get(  '/',      'ProductsController@index' );
-  Route::get(  'edit',   'ProductsController@edit' );
+  Route::get( '/',    'ProductsController@index' );
+  Route::get( 'edit', 'ProductsController@edit' );
+  Route::get( 'sections', 'ProductsController@sections' );
+  Route::get( 'sections/{slug}', 'ProductsController@sections' );
 
   // CRUD
   Route::post( 'create', 'ProductsController@store' );

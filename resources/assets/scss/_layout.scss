@@ -30,9 +30,10 @@
     position: fixed;
     left: 300px;
     top: 0;
-    width: 250px;
+    width: 220px;
     height: 100vh;
-    background: theme-color(40%);
+    background: theme-color(45%);
+    border-right: 1px solid #DDD;
 }
 
 #products
@@ -43,7 +44,6 @@
     top: 0;
     left: $offset;
     width: calc( 100% - #{$offset} );
-    border-left: 1px solid hsl(0,0%,78%);
 
     .top
     {
@@ -78,7 +78,6 @@
             margin-right: 1.25%;
             padding: 0.675em 10px;
             background: white;
-
         }
 
         input,
@@ -94,4 +93,10 @@
             height: 42px;
         }
     }
+}
+
+main.products-index.sections #products
+{
+    width: calc( 100% - 520px );
+    left: 520px;
 }

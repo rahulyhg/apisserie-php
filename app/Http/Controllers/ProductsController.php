@@ -7,13 +7,22 @@ use Redirect;
 use Request;
 use Validator;
 
+/**
+ * Products Controller.
+ *
+ */
 class ProductsController extends Controller
 {
 
+    /**
+     * Products listed alphabetically.
+     *
+     * @return View
+     */
     public function index ()
     {
-        $products = $this->getGroupedProducts();
-        $sections = $this->getIndexedSections();
+        $products = $this->getGroupedProducts(Product::all());
+        $sections = Section::all()->sortBy('order');
 
         return view('products.index')
                 ->with( 'products', $products )
@@ -21,11 +30,37 @@ class ProductsController extends Controller
     }
 
 
+    /**
+     * Product list with sections filters.
+     *
+     * @param string $id
+     * @return View
+     */
+    public function sections ( $slug = null )
+    {
+        //Book::with('author')->get()
+        $sections = Section::all()->sortBy('order');
+        $section  = $sections->where( 'slug', $slug )->first();
+        $products = $slug ? $section->products()->get() : Product::all();
 
+        $products = $this->getGroupedProducts($products->sortBy('name'));
+
+        return view('products.sections')
+                ->with( 'products', $products )
+                ->with( 'sections', $sections )
+                ->with( 'slug', $slug );
+    }
+
+
+    /**
+     * Edit products.
+     *
+     * @return View
+     */
     public function edit ()
     {
         $products = Product::all()->sortBy('name');
-        $sections = $this->getIndexedSections();
+        $sections = Section::all()->sortBy('order');
 
         return view('products.edit')
                 ->with( 'products', $products )
@@ -33,7 +68,12 @@ class ProductsController extends Controller
     }
 
 
-
+    /**
+     * Create a new Product.
+     *
+     * @param FormRequest $request
+     * @return View
+     */
     public function store ( CreateProductRequest $request )
     {
         $product = Product::create($request->all());
@@ -42,7 +82,11 @@ class ProductsController extends Controller
     }
 
 
-
+    /**
+     * CRUD Delete.
+     *
+     * @return View
+     */
     public function update ()
     {
         $request = new CreateProductRequest();
@@ -79,7 +123,11 @@ class ProductsController extends Controller
     }
 
 
-
+    /**
+     * CRUD Delete.
+     *
+     * @return View
+     */
     public function delete ( $id )
     {
         $product = Product::find($id);
@@ -91,11 +139,13 @@ class ProductsController extends Controller
     }
 
 
-
-    private function getGroupedProducts ()
+    /**
+     * Groups products by first letter.
+     *
+     * @param string $id
+     */
+    private function getGroupedProducts ( $products )
     {
-        $products = Product::all()->sortBy('name');
-
         foreach ( $products as $product )
         {
             $letter = strtoupper(substr( $product->name, 0, 1 ));
@@ -107,21 +157,9 @@ class ProductsController extends Controller
             $groupedProducts[$letter][] = $product;
         }
 
+        ksort($groupedProducts);
+
         return $groupedProducts;
-    }
-
-
-
-    private function getIndexedSections ()
-    {
-        $sections = Section::all()->sortBy('order');
-
-        foreach ( $sections as $section )
-        {
-            $indexedSections[$section->id] = $section->name;
-        }
-
-        return $indexedSections;
     }
 
 }
