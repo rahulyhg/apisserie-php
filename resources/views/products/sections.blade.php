@@ -85,9 +85,9 @@
                                     Choose...
                                 </option>
 
-                                @foreach ( $sections as $id => $name )
+                                @foreach ( $sections as $section )
 
-                                    <option value="{{ $id }}">{{ $name }}</option>
+                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
 
                                 @endforeach
 
