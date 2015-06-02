@@ -3,19 +3,22 @@
 use App\Category;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Product model.
+ *
+ */
 class Product extends Model
 {
 
     protected $table = 'products';
 
-    protected $fillable = ['name','section_id'];
+    protected $fillable = [ 'name', 'slug', 'section_id' ];
 
 
-    public function scopeOfSection ( $query, $id )
-    {
-        return $query->where( 'section_id', '=', $id );
-    }
-
+    /**
+     * One-to-Many relationship getter.
+     *
+     */
     public function section ()
     {
         return $this->hasOne('App\Section');

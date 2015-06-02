@@ -58,7 +58,7 @@ class ProductsController extends Controller
      */
     public function edit ()
     {
-        $products = Product::all()->sortBy('name');
+        $products = Product::all()->sortBy('slug');
         $sections = Section::all()->sortBy('order');
 
         return view('products.edit')
@@ -145,7 +145,7 @@ class ProductsController extends Controller
      */
     private function getGroupedProducts ( $products )
     {
-        $products->sortBy('name');
+        $products->sortBy('slug');
 
         foreach ( $products as $product )
         {
