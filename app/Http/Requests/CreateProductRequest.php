@@ -24,7 +24,7 @@ class CreateProductRequest extends Request {
 		return
 		[
 			'name'       => [ 'required', 'unique:products' ],
-			'section_id' => [ 'required', 'integer' ]
+			'section_id' => [ 'required', 'integer' ],
 		];
 	}
 

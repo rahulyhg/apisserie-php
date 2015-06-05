@@ -101,9 +101,9 @@
                                             <span class="name">
                                                 {{ $product->name }}
                                             </span>
-                                            {{-- <span class="section">
-                                                ({{ $sections[$product->section_id] }})
-                                            </span> --}}
+                                            <div class="note">
+                                                <input type="text">
+                                            </div>
                                         </li>
 
                                     @endforeach

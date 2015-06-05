@@ -16,7 +16,7 @@ var Trash = function ()
 
                 if ( !isNaN(pid) )
                 {
-                    if ( localStorage[pid] === 'true' )
+                    if ( localStorage.getItem(pid) !== 'false' )
                     {
                         // prevent crash if a deleted product is still in the bag
                         if ( !( pid in window.PRODUCTS ) )
@@ -26,7 +26,15 @@ var Trash = function ()
                         }
 
                         // pre-select item
-                        window.PRODUCTS[pid].take();
+                        window.PRODUCTS[pid]
+                            .take()
+                            .setNote(localStorage.getItem(pid))
+                            .render();
+
+                        if ( localStorage.getItem(pid) !== 'true' )
+                        {
+                            window.PRODUCTS[pid].setNote(localStorage.getItem(pid));
+                        }
                     }
                     else
                     {

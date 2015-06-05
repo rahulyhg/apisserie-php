@@ -6,8 +6,10 @@ var Product = function ( container )
     var $this = this;
 
     // shortcuts
-    this.container = container;
-    this.trash     = this.container.find('.remove');
+    this.container     = container;
+    this.trash         = this.container.find('.remove');
+    this.noteContainer = this.container.find('.note');
+    this.note          = this.noteContainer.find('input');
 
     // product ID
     this.ID = parseInt(this.container.attr('data-pid'));
@@ -15,34 +17,86 @@ var Product = function ( container )
     // product selected yes/no
     this.active = false;
 
+    // product note
+    this.noteContent = '';
+
 
     this.construct = function ()
     {
-        $this.container.on( 'click', $this.take );
-        $this.trash.on( 'click', $this.drop );
+        $this.container.on( 'click', $this.onItemClick );
+        $this.trash.on( 'click', $this.onTrashClick );
+        $this.note.on( 'blur', $this.onNoteBlur );
     }
 
-    // set active
     this.take = function ()
     {
-        $this.container.addClass('selected');
         $this.active = true;
 
-        BAG.addItem( $this.ID );
+        return $this;
     }
 
-    // unset active
     this.drop = function ()
     {
-        if ( arguments.length )
-        {
-            arguments[0].stopPropagation();
-        }
-
-        $this.container.removeClass('selected');
         $this.active = false;
 
-        BAG.removeItem( $this.ID );
+        return $this;
+    }
+
+    this.setNote = function ()
+    {
+        var content = arguments.length ? arguments[0] : $this.note.val();
+
+        $this.noteContent = content;
+
+        return $this;
+    }
+
+    // propagate all object data to frontend
+    this.render = function ()
+    {
+        if ( $this.active )
+        {
+            $this.container.addClass('selected');
+
+            localStorage.setItem( $this.ID, $this.noteContent );
+
+            $this.note.val($this.noteContent);
+        }
+        else
+        {
+            $this.container.removeClass('selected');
+
+            localStorage.removeItem( $this.ID );
+        }
+    }
+
+    this.onNoteBlur = function (e)
+    {
+        e.preventDefault();
+
+        var note = $this.note.val();
+
+        if ( note !== $this.noteContent )
+        {
+            $this.setNote(note).render();
+        }
+    }
+
+    this.onItemClick = function (e)
+    {
+        e.preventDefault();
+
+        $this.note.focus();
+
+        $this.take().render();
+    }
+
+    this.onTrashClick = function (e)
+    {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $this.drop().render();
     }
 
     this.construct();

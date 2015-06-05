@@ -31,9 +31,17 @@ input[type=email],
 select
 {
     padding: 0.675em 10px;
-    border: 1px solid #CCC;
     box-shadow: none;
+    border: 1px solid #CCC;
     transition: box-shadow 100ms ease-out;
+}
+
+%InputFocus
+{
+    outline: none;
+    background: white;
+    border: 1px solid theme-color(-5%);
+    box-shadow: 0 0 4px 2px theme-color(20%);
 }
 
 input[type=text],
@@ -46,9 +54,7 @@ select,
 
     &:focus
     {
-        outline: none;
-        border-color: theme-color(-5%);
-        box-shadow: 0 0 4px 2px theme-color(20%);
+        @extend %InputFocus;
     }
 }
 

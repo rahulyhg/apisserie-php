@@ -26,6 +26,7 @@
               <li data-pid="{{ $product->id }}" class="product">
                   <span>
                     [ ] {{ $product->name }}
+                    <span class="note"></span>
                   </span>
               </li>
 
