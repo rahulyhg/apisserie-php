@@ -12,6 +12,7 @@ That's what this app is about.
 
 * Easy pick items from alphabetical list or filtered by section.
 * Active list is kept in memory using localStorage.
+* Add additional text to any product (useful to specify a quantity).
 * Add/remove/update products.
 * Authentication-enabled to keep your list private.
 
