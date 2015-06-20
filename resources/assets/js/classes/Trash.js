@@ -18,10 +18,9 @@ var Trash = function ()
                 {
                     if ( localStorage.getItem(pid) !== 'false' )
                     {
-                        // prevent crash if a deleted product is still in the bag
+                        // ignore PIDs absent from DOM
                         if ( !( pid in window.PRODUCTS ) )
                         {
-                            $this.items.push(pid);
                             continue;
                         }
 
