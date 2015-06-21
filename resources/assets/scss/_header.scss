@@ -74,6 +74,12 @@
                     background: #C00;
                 }
             }
+
+            &.sections
+            {
+                .on  { display: block }
+                .off { display: none }
+            }
         }
     }
 }

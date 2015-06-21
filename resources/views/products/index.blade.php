@@ -22,8 +22,11 @@
             <a href="#">{{ Lang::get('ui.sidebar.clear') }}</a>
         </li>
         <li class="sections">
-            <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') ) }}">
+            <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') ) }}" class="on">
                 {{ Lang::get('ui.sidebar.showSections') }}
+            </a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') ) }}" class="off" style="display:none">
+                {{ Lang::get('ui.sidebar.hideSections') }}
             </a>
         </li>
         <li>

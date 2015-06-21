@@ -28,6 +28,7 @@ var SectionToggler = function ()
         var state = $this.visible ? 0 : 1;
 
         $this.container.attr( 'data-sections', state );
+        $this.trigger.find('a').css({ display : 'block' }).filter( $this.visible ? '.off' : '.on' ).hide();
 
         $this.visible = !$this.visible;
     }
