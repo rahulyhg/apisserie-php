@@ -83,7 +83,7 @@
 
                             {!! Form::text( 'name', null, [ 'required', 'placeholder' => Lang::get('ui.addProduct') ] ) !!}
 
-                            <select name="section_id" required>
+                            <select name="section_id" required {{ !empty($slug) ? 'disabled' : '' }}>
 
                                 <option value="" disabled selected>
                                     {{ Lang::get('ui.choose') }}...
@@ -91,7 +91,7 @@
 
                                 @foreach ( $sections as $section )
 
-                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                    <option value="{{ $section->id }}" {{ $slug === $section->slug ? 'selected' : '' }}>{{ $section->name }}</option>
 
                                 @endforeach
 
