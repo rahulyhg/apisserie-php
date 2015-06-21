@@ -1,3 +1,33 @@
+main[data-sections]
+{
+    #sections, #products
+    {
+        transition: 200ms ease-out;
+    }
+
+    &[data-sections="0"]
+    {
+        #sections
+        {
+            transform: translateX(-100%);
+        }
+
+        #products
+        {
+            width: calc( 100% - #{$sidebarWidth} );
+            left: $sidebarWidth;
+        }
+    }
+
+    &[data-sections="1"]
+    {
+        #sections
+        {
+            transform: translateX(0);
+        }
+    }
+}
+
 #sections
 {
     .title

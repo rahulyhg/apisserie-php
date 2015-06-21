@@ -31,7 +31,7 @@ $(function()
 
 
 
-    /* Header
+    /* Header/Sidebar
     ------------------------------------------ */
 
     $('#sidebar header .clear-all').on( 'click', window.BAG.clearAll );
@@ -42,6 +42,11 @@ $(function()
 
         window.printFrame.refresh().done( function() { window.printFrame.print() } );
     })
+
+    if ( $('main[data-sections]').length )
+    {
+        new SectionToggler();
+    }
 
 
     /* onLoad Storage Management

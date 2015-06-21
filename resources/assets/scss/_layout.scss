@@ -17,7 +17,7 @@
 #sidebar
 {
     position: fixed;
-    width: 300px;
+    width: $sidebarWidth;
     height: 100vh;
     background: #191919;
     color: white;
@@ -28,9 +28,9 @@
 #sections
 {
     position: fixed;
-    left: 300px;
+    left: $sidebarWidth;
     top: 0;
-    width: 220px;
+    width: $sectionsWidth;
     height: 100vh;
     background: theme-color(45%);
     border-right: 1px solid #DDD;
@@ -38,7 +38,7 @@
 
 #products
 {
-    $offset: 300px;
+    $offset: $sidebarWidth;
 
     position: absolute;
     top: 0;
@@ -97,6 +97,6 @@
 
 main.products-index.sections #products
 {
-    width: calc( 100% - 520px );
-    left: 520px;
+    width: calc( 100% - ( #{$sidebarWidth} + #{$sectionsWidth} ) );
+    left: $sidebarWidth + $sectionsWidth;
 }

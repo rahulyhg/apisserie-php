@@ -21,7 +21,7 @@
         <li class="clear-all">
             <a href="#">{{ Lang::get('ui.sidebar.clear') }}</a>
         </li>
-        <li>
+        <li class="sections">
             <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') ) }}">
                 {{ Lang::get('ui.sidebar.showSections') }}
             </a>
@@ -39,7 +39,27 @@
 
 @section('content')
 
-    <main class="products-index">
+    <main class="products-index sections" data-sections="0">
+
+        <div id="sections">
+
+            <div class="title">
+                <h2>{{ Lang::get('ui.sections') }}</h2>
+            </div>
+
+            <ul>
+
+                @foreach ( $sections as $section )
+
+                    <li>
+                        <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') . '/' . $section->slug ) }}">{{ $section->name }}</a>
+                    </li>
+
+                @endforeach
+
+            </ul>
+
+        </div>
 
         <div id="products" class="column {{ Session::get('notification') || $errors->any() ? 'ui-notify' : '' }}">
 
