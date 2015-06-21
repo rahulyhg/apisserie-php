@@ -14,16 +14,20 @@
 
     <ul>
         <li class="print">
-            <a href="{{ url('print') }}">Print</a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.print') ) }}">
+                {{ Lang::get('ui.sidebar.print') }}
+            </a>
         </li>
         <li class="clear-all">
-            <a href="#">Clear items</a>
+            <a href="#">{{ Lang::get('ui.sidebar.clear') }}</a>
         </li>
         <li>
-            <a href="{{ url('products') }}">Hide Sections</a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.products.index') ) }}">{{ Lang::get('ui.sidebar.hideSections') }}</a>
         </li>
         <li>
-            <a href="{{ url('products/edit') }}">Edit</a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.products.edit') ) }}">
+                {{ Lang::get('ui.sidebar.edit') }}
+            </a>
         </li>
     </ul>
 
@@ -38,7 +42,7 @@
         <div id="sections">
 
             <div class="title">
-                <h2>Sections</h2>
+                <h2>{{ Lang::get('ui.sections') }}</h2>
             </div>
 
             <ul>
@@ -46,7 +50,7 @@
                 @foreach ( $sections as $section )
 
                     <li class="{{ $slug && $section->slug === $slug ? 'selected' : '' }}">
-                        <a href="{{ url('products/sections/' . $section->slug ) }}">{{ $section->name }}</a>
+                        <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') . '/' . $section->slug ) }}">{{ $section->name }}</a>
                     </li>
 
                 @endforeach
@@ -77,12 +81,12 @@
 
                         {!! Form::open([ 'url' => 'products/create', 'id' => 'addProductForm' ]) !!}
 
-                            {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+                            {!! Form::text( 'name', null, [ 'required', 'placeholder' => Lang::get('ui.addProduct') ] ) !!}
 
                             <select name="section_id" required>
 
                                 <option value="" disabled selected>
-                                    Choose...
+                                    {{ Lang::get('ui.choose') }}...
                                 </option>
 
                                 @foreach ( $sections as $section )
@@ -94,7 +98,7 @@
                             </select>
 
                             <button type="submit" class="btn">
-                                Add
+                                {{ Lang::get('ui.add') }}
                             </button>
 
                         {!! Form::close() !!}

@@ -8,7 +8,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Boogaloo' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link href="{{ url('/') }}/css/styles.css" rel="stylesheet">
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     </head>
     <body>
 
@@ -29,11 +29,14 @@
                 <footer>
 
                     <p>
-                        <a href="auth/logout">Logout</a>
+                        <a href="auth/logout">{{ Lang::get('ui.logout') }}</a>
+                        -
+                        <a href="{{ altLocaleURL() }}">{{ altLocaleName() }}</a>
                     </p>
 
                     <p>
-                        Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
+                        <strong>{{ Lang::get('ui.credits') }} :</strong>
+                        <a href="http://www.freepik.com" title="Freepik">Freepik</a>
                     </p>
 
                 </footer>
@@ -44,7 +47,7 @@
 
         </div>
 
-        <script src="{{ url('/') }}/js/jquery.2.1.1.min.js"></script>
+        <script src="{{ asset('js/jquery.2.1.1.min.js') }}"></script>
 
         @yield('scripts')
 

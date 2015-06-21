@@ -3,6 +3,7 @@
 use App\Http\Requests\CreateProductRequest;
 use App\Product;
 use App\Section;
+use Lang;
 use Redirect;
 use Request;
 use Validator;
@@ -77,7 +78,8 @@ class ProductsController extends Controller
     {
         $product = Product::create($request->all());
 
-        return redirect('products')->with( 'notification', 'Product added : ' . $product->name );
+        return redirect( locale() . '/' . Lang::get('routes.products.index') )
+                ->with( 'notification', Lang::get('ui.notification.productAdded', [ 'product' => $product->name ]) );
     }
 
 
@@ -97,7 +99,7 @@ class ProductsController extends Controller
         {
             if ( $product->section_id === Request::input('section_id') )
             {
-                return redirect('products/edit');
+                return redirect( locale() . '/' . Lang::get('routes.products.edit') );
             }
 
             $rules = array_except( $rules, 'name' );
@@ -117,7 +119,8 @@ class ProductsController extends Controller
 
         if ( $affectedRows )
         {
-            return redirect('products/edit')->with( 'notification', 'Product updated : ' . Request::input('name') );
+            return redirect( locale() . '/' . Lang::get('routes.products.edit') )
+                    ->with( 'notification', Lang::get('ui.notification.productUpdated', [ 'product' => Request::input('name') ]) );
         }
     }
 
@@ -134,7 +137,8 @@ class ProductsController extends Controller
 
         $product->delete();
 
-        return redirect('products/edit')->with( 'notification', 'Product deleted : ' . $name );
+        return redirect( locale() . '/' . Lang::get('routes.products.edit') )
+                ->with( 'notification', Lang::get('ui.notification.productDeleted', [ 'product' => $name ]) );
     }
 
 

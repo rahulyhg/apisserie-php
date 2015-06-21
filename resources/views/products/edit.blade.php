@@ -6,7 +6,7 @@
 
     <ul>
         <li>
-            <a href="{{ url('products') }}">Back</a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.products.index') ) }}">{{ Lang::get('ui.back') }}</a>
         </li>
     </ul>
 
@@ -48,7 +48,7 @@
 
                         <li data-pid="{{ $product->id }}" class="product {{ Session::get('productId') === $product->id ? 'invalid' : '' }}">
 
-                            {!! Form::open([ 'url' => 'products/update', 'class' => 'UpdateProductForm' ]) !!}
+                            {!! Form::open([ 'url' => locale() . '/products/update', 'class' => 'UpdateProductForm' ]) !!}
 
                                 {!! Form::hidden( 'id', $product->id ) !!}
 
@@ -57,7 +57,7 @@
                                 <select name="section_id" required>
 
                                     <option value="" disabled selected>
-                                        Choose...
+                                        {{ Lang::get('ui.choose') }}...
                                     </option>
 
                                     @foreach ( $sections as $section )
@@ -71,16 +71,16 @@
                                 </select>
 
                                 <button type="submit" class="btn">
-                                    Save
+                                    {{ Lang::get('ui.save') }}
                                 </button>
 
                             {!! Form::close() !!}
 
-                            {!! Form::open([ 'url' => 'products/delete/' . $product->id, 'method' => 'DELETE', 'class' => 'DeleteProductForm' ]) !!}
+                            {!! Form::open([ 'url' => locale() . '/products/delete/' . $product->id, 'method' => 'DELETE', 'class' => 'DeleteProductForm' ]) !!}
 
                                 <button type="submit" class="btn">
-                                    <span class="warning">Sure ?</span>
-                                    <span class="default">Delete</span>
+                                    <span class="warning">{{ Lang::get('ui.deleteConfirmation') }}</span>
+                                    <span class="default">{{ Lang::get('ui.delete') }}</span>
                                 </button>
 
                             {!! Form::close() !!}

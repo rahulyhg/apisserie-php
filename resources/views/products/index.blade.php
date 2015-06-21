@@ -14,16 +14,22 @@
 
     <ul>
         <li class="print">
-            <a href="{{ url('print') }}">Print</a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.print') ) }}">
+                {{ Lang::get('ui.sidebar.print') }}
+            </a>
         </li>
         <li class="clear-all">
-            <a href="#">Clear items</a>
+            <a href="#">{{ Lang::get('ui.sidebar.clear') }}</a>
         </li>
         <li>
-            <a href="{{ url('products/sections') }}">Show Sections</a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') ) }}">
+                {{ Lang::get('ui.sidebar.showSections') }}
+            </a>
         </li>
         <li>
-            <a href="{{ url('products/edit') }}">Edit</a>
+            <a href="{{ url( locale() . '/' . Lang::get('routes.products.edit') ) }}">
+                {{ Lang::get('ui.sidebar.edit') }}
+            </a>
         </li>
     </ul>
 
@@ -55,14 +61,14 @@
 
                     <div class="form">
 
-                        {!! Form::open([ 'url' => 'products/create', 'id' => 'addProductForm' ]) !!}
+                        {!! Form::open([ 'url' => locale() . '/products/create', 'id' => 'addProductForm' ]) !!}
 
-                            {!! Form::text( 'name', null, [ 'required', 'placeholder' => 'Add product' ] ) !!}
+                            {!! Form::text( 'name', null, [ 'required', 'placeholder' => Lang::get('ui.addProduct') ] ) !!}
 
                             <select name="section_id" required>
 
                                 <option value="" disabled selected>
-                                    Choose...
+                                    {{ Lang::get('ui.choose') }}
                                 </option>
 
                                 @foreach ( $sections as $section )
@@ -74,7 +80,7 @@
                             </select>
 
                             <button type="submit" class="btn">
-                                Add
+                                {{ Lang::get('ui.add') }}
                             </button>
 
                         {!! Form::close() !!}

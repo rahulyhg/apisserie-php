@@ -148,6 +148,8 @@ return [
 		// Html + Form
 		'Illuminate\Html\HtmlServiceProvider',
 
+		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider'
+
 	],
 
 	/*
@@ -199,6 +201,8 @@ return [
 		// Html + Form
 		'Html'      => 'Illuminate\Html\HtmlFacade',
     	'Form'      => 'Illuminate\Html\FormFacade',
+
+    	'Localize'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization'
 
 	],
 

@@ -14,28 +14,47 @@
 
 Route::get( '/', function()
 {
-    return redirect('products');
+    return redirect('en/' . Lang::get('routes.products.index') );
 });
 
-Route::group(['prefix' => 'products'], function()
+Route::group(['prefix' => Localize::setLocale()], function ()
 {
-    Route::get( '/',    'ProductsController@index' );
-    Route::get( 'edit', 'ProductsController@edit' );
-    Route::get( 'sections', 'ProductsController@sections' );
-    Route::get( 'sections/{slug}', 'ProductsController@sections' );
+    // PRODUCTS
+    // ---------------------------------------
+
+    Route::get( '/', function()
+    {
+        return redirect( Localize::getCurrentLocale() . '/' . Lang::get('routes.products.index'));
+    });
+
+    Route::get( Localize::transRoute('routes.products.index'),    'ProductsController@index' );
+    Route::get( Localize::transRoute('routes.products.edit'),     'ProductsController@edit' );
+    Route::get( Localize::transRoute('routes.products.sections'), 'ProductsController@sections' );
+    Route::get( Localize::transRoute('routes.products.sections') . '/{slug}', 'ProductsController@sections' );
 
     // CRUD
-    Route::post( 'create', 'ProductsController@store' );
-    Route::post( 'update', 'ProductsController@update' );
-    Route::delete( 'delete/{id}', 'ProductsController@delete' );
+    Route::post(   'products/create', 'ProductsController@store' );
+    Route::post(   'products/update', 'ProductsController@update' );
+    Route::delete( 'products/delete/{id}', 'ProductsController@delete' );
+
+
+    // SECTIONS
+    // ---------------------------------------
+
+    // CRUD
+    Route::post( 'sections/create', 'SectionsController@store' );
+
+
+    // PRINT
+    // ---------------------------------------
+
+    Route::get( Lang::get('routes.print'), 'PagesController@toPrint' );
+
 });
 
-Route::group(['prefix' => 'sections'], function()
-{
-    Route::post( 'create', 'SectionsController@store' );
-});
-
-Route::get( 'print', 'PagesController@toPrint' );
+// fix bug with localization package + parameter routes
+Route::get( 'fr/products/sections/{slug}', 'ProductsController@sections' );
+Route::get( 'en/produits/rayons/{slug}', 'ProductsController@sections' );
 
 
 Route::get( 'auth/register', function()

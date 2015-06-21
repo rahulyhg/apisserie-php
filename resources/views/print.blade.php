@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A'pisserie</title>
+    <title>Apisserie</title>
 
     <link href="{{ url('/') }}/css/print.css" rel="stylesheet">
   </head>
