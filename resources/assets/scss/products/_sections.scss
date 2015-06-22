@@ -48,6 +48,13 @@ main[data-sections]
         color: theme-color( 20%, -10% )
     }
 
+    nav
+    {
+        height: calc( 100vh - #{$top-row-height} );
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+
     ul
     {
         border-top: 1px solid white;

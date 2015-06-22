@@ -45,17 +45,19 @@
                 <h2>{{ Lang::get('ui.sections') }}</h2>
             </div>
 
-            <ul>
+            <nav>
+                <ul>
 
-                @foreach ( $sections as $section )
+                    @foreach ( $sections as $section )
 
-                    <li class="{{ $slug && $section->slug === $slug ? 'selected' : '' }}">
-                        <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') . '/' . $section->slug ) }}">{{ $section->name }}</a>
-                    </li>
+                        <li class="{{ $slug && $section->slug === $slug ? 'selected' : '' }}">
+                            <a href="{{ url( locale() . '/' . Lang::get('routes.products.sections') . '/' . $section->slug ) }}">{{ $section->name }}</a>
+                        </li>
 
-                @endforeach
+                    @endforeach
 
-            </ul>
+                </ul>
+            </nav>
 
         </div>
 
