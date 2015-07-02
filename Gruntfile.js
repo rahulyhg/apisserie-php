@@ -22,7 +22,8 @@ module.exports = function(grunt)
             {
                 options :
                 {
-                    style: 'compressed'
+                    style: 'compressed',
+                    sourcemap: 'none'
                 },
 
                 files :
@@ -39,8 +40,7 @@ module.exports = function(grunt)
             {
                 options :
                 {
-                    sourceMap : true,
-                    sourceMapIncludeSources : true,
+                    sourceMap : false
                 },
 
                 files :
