@@ -151,7 +151,7 @@
             </div>
 
 
-            <iframe src="{{ url('/print') }}" frameborder="0" id="print-frame"></iframe>
+            <iframe src="{{ url( locale() . '/' . Lang::get('routes.print') ) }}" frameborder="0" id="print-frame"></iframe>
 
         </div>
 
